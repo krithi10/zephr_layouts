@@ -35,10 +35,6 @@
   padding:2px 0;
   }  
 }
-
-[data-reg-handler="signInHandler"] {
-  margin-top:-5px;
-}
 </style>
 
 <div class="dss-button">
