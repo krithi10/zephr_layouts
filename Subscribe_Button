@@ -59,6 +59,7 @@ trb.metering.manager.user.mobile(function(tablet) {
 	let subButtonElem = document.querySelector(".dss-button");
 	let placementTarget = '{{placement-target}}';
 	if(placementTarget !== 'trial'){
+		$('.bar-dss').prepend($('.dss-button'));
 		console.log("--------------loading Subscribe Button-------------");
 		if(placementTarget === 'button_desktop'){
 		    console.log("--------------button_desktop-------------");
