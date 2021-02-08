@@ -55,22 +55,22 @@ trb.metering.manager.user.mobile(function(tablet) {
 -->
 <script>
 (() => {
-	console.log("--------------loading Subscribe Button-------------");
 	console.log("--------------Placement Target :{{placement-target}}-------------");
 	let subButtonElem = document.querySelector(".dss-button");
 	let placementTarget = '{{placement-target}}';
 	if(placementTarget !== 'trial'){
+		console.log("--------------loading Subscribe Button-------------");
+		$('.bar-dss').prepend($('.dss-button'));
 		if(placementTarget === 'button_desktop'){
 		    console.log("--------------button_desktop-------------");
 		    document.querySelector("[data-reg-role='button_desktop']").appendChild(subButtonElem);
-		}else if(placementTarget === 'button_tablet'){
-		   console.log("--------------button_tablet-------------");
-		    document.querySelector("[data-reg-role='button_tablet']").appendChild(subButtonElem);
 		}else if(placementTarget === 'button_mobile'){
 		   console.log("--------------button_mobile-------------");
 		    document.querySelector("[data-reg-role='button_mobile']").appendChild(subButtonElem);
+		}else{
+		   console.log("--------------button_tablet-------------");
+		    document.querySelector("[data-reg-role='button_tablet']").appendChild(subButtonElem);
 		}
-		 $('.bar-dss').prepend($('.dss-button'));
 	}
 	if(placementTarget === 'trial'){
 	    console.log("--------------Topic Flyout-------------");
