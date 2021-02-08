@@ -59,6 +59,10 @@ trb.metering.manager.user.mobile(function(tablet) {
 	console.log("--------------Placement Target :{{placement-target}}-------------");
 	let subButtonElem = document.querySelector(".dss-button");
 	let placementTarget = '{{placement-target}}';
+	if(placementTarget === 'trial'){
+	    console.log("--------------Topic Flyout-------------");
+	    document.querySelector("[data-reg-role='trial']").appendChild(subButtonElem);
+	}
 	if(placementTarget === 'button_desktop'){
 	    console.log("--------------button_desktop-------------");
 	    document.querySelector("[data-reg-role='button_desktop']").appendChild(subButtonElem);
@@ -68,9 +72,6 @@ trb.metering.manager.user.mobile(function(tablet) {
 	}else if(placementTarget === 'button_mobile'){
 	   console.log("--------------button_mobile-------------");
 	    document.querySelector("[data-reg-role='button_mobile']").appendChild(subButtonElem);
-	}else if(placementTarget === 'trial'){
-	    console.log("--------------Topic Flyout-------------");
-	    document.querySelector("[data-reg-role='trial']").appendChild(subButtonElem);
 	}
 })();
  $('.bar-dss').prepend($('.dss-button'));
