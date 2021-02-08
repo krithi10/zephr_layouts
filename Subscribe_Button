@@ -70,7 +70,6 @@ trb.metering.manager.user.mobile(function(tablet) {
 		   console.log("--------------button_tablet-------------");
 		    document.querySelector("[data-reg-role='button_tablet']").appendChild(subButtonElem);
 		}
-		$('.bar-dss').prepend($('.dss-button'));
 	}
 	if(placementTarget === 'trial'){
 	    console.log("--------------Topic Flyout-------------");
