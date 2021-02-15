@@ -112,7 +112,7 @@ html[data-content-mobile] .met-account-flyout.closed {
   transition-delay: 0.25s;
 }
 </style>
-<div class="met-account-flyout" style="display:none">
+<div class="met-account-flyout">
 	<ul>
 	  <li><a href="#" data-reg-text data-reg-handler="profileHandler"></a></li>
 	  <li id="met-account-manage-sub"><a href="{{subscription-domain}}">Manage my Subscription</a></li>
