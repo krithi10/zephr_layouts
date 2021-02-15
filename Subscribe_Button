@@ -38,7 +38,7 @@
 </style>
 
 <div class="dss-button">
-  <a class="met-button-var{{variation}}" href="{{subscribe-url}}" data-lines="{{mobile-lines}}" data-met-return><b>{{subscribe-text}}</b><br>{{offer-text}}</a>
+  <a class="met-button-var{{variation}}" href="{{subscribe-url}}" data-lines="{{mobile-lines}}" data-met-return><b>{{subscribe-text}}<br>{{offer-text}}</b></a>
 </div>
 
 <!-- unsupported by zephr
