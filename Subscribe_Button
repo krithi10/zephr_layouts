@@ -1,12 +1,5 @@
 <!-- { "dss-name": "Button", "dss-reaction-type": "Flyout" } -->
 <style>
-.bar-dss [data-reg-role^=button] .dss-button a {
-    margin-left: 5px;
-    padding: 3px 0;
-    height: 32px;
-    width: 208px;
-    line-height: 13px;
-}
 .dss-button a[data-met-return] {
   color: {{text-color}};
   display: {{display-type}};
@@ -20,6 +13,7 @@
   text-align: center;
   overflow: hidden;
   width: 185px;
+  height:32px;
 }
 
 .dss-button b {
