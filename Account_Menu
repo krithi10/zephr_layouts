@@ -124,6 +124,24 @@ html[data-content-mobile] .met-account-flyout.closed {
 </div>
 
 <script>
+(() => {
+  let elem = document.querySelector("[data-reg-role='navigation']");
+  if(elem){
+  	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
+		console.log("----------loading Account flyout-----------");
+  		let accFlyoutElem = document.querySelector(".met-account-flyout");
+		document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
+		if(accFlyoutElem.style.display === "none"){
+		console.log("----------display Account flyout-----------");
+			document.querySelector(".met-account-flyout").style.display = "block";
+		}
+		else{
+		console.log("----------display not Account flyout-----------");
+			document.querySelector(".met-account-flyout").style.display = "none";
+		}
+  	});
+  }
+  })();
     /*DSS-14457: Start*/
   trb.metering.manager.user.subscriptions(function(subs) {
     if(subs.length > 0)
@@ -131,20 +149,6 @@ html[data-content-mobile] .met-account-flyout.closed {
   });
   /*DSS-14457: End*/  
 (function($) {
-$("[data-reg-handler='toggleNavigation']").click(function(){
-let elem = document.querySelector("[data-reg-role='navigation']");
-  if(elem){
-  let accFlyoutElem = document.querySelector(".met-account-flyout");
-	document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
-  	console.log("hi")
-	$(".met-account-flyout").toggle(
-		function(){
-			
-		console.log("inside toggle",$(this));
-				
-		});
-	}
-  });
   var name = registration.user.getDisplayName();
   name = (name.length > 25) ? name.substr(0, 25) + '...' : name;
   $('.met-account-flyout [data-reg-text]').html(name);
