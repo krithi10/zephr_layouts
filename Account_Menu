@@ -137,8 +137,8 @@ html[data-content-mobile] .met-account-flyout.closed {
 				document.querySelector(".met-account-flyout").style.display = "block";
 			});
 		}
-		else{
-			document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
+		else if(accFlyoutElem.style.display === "block"){
+			document.querySelector("body").addEventListener('click',function(){
 				console.log("----------display not Account flyout-----------");
 				document.querySelector(".met-account-flyout").style.display = "none";
 			});
