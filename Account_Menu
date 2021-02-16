@@ -140,12 +140,6 @@ html[data-content-mobile] .met-account-flyout.closed {
 			document.querySelector(".met-account-flyout").style.display = "none";
 		}
   	});
-	document.querySelector("body").addEventListener('click',function(){
-		console.log("inside body")
-		if(accFlyoutElem.style.display === "block"){
-			document.querySelector(".met-account-flyout").style.display = "none";
-		}	
-  	});
   }
 })();
     /*DSS-14457: Start*/
