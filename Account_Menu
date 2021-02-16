@@ -128,23 +128,18 @@ html[data-content-mobile] .met-account-flyout.closed {
   let elem = document.querySelector("[data-reg-role='navigation']");
   let accFlyoutElem = document.querySelector(".met-account-flyout");
   if(elem){
-	document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
-	document.querySelector(".met-account-flyout").style.display = "none";
+  	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
 		console.log("----------loading Account flyout-----------");
-		if(document.querySelector(".met-account-flyout").style.display === "none"){
-		console.log("inside If")
-			document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
-				console.log("----------display Account flyout-----------");
-				document.querySelector(".met-account-flyout").style.display = "block";
-			});
+		document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
+		if(accFlyoutElem.style.display === "none"){
+		console.log("----------display Account flyout-----------");
+			document.querySelector(".met-account-flyout").style.display = "block";
 		}
-		else if(document.querySelector(".met-account-flyout").style.display === "block"){
-		console.log("inside else If")
-			document.querySelector("body").addEventListener('click',function(){
-				console.log("----------display not Account flyout-----------");
-				document.querySelector(".met-account-flyout").style.display = "none";
-			});
+		else{
+		console.log("----------display not Account flyout-----------");
+			document.querySelector(".met-account-flyout").style.display = "none";
 		}
+  	});
   }
 })();
     /*DSS-14457: Start*/
