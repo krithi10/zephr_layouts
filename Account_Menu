@@ -131,13 +131,15 @@ html[data-content-mobile] .met-account-flyout.closed {
 	document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
 	document.querySelector(".met-account-flyout").style.display = "none";
 		console.log("----------loading Account flyout-----------");
-		if(accFlyoutElem.style.display === "none"){
+		if(document.querySelector(".met-account-flyout").style.display === "none"){
+		console.log("inside If")
 			document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
 				console.log("----------display Account flyout-----------");
 				document.querySelector(".met-account-flyout").style.display = "block";
 			});
 		}
-		else if(accFlyoutElem.style.display === "block"){
+		else if(document.querySelector(".met-account-flyout").style.display === "block"){
+		console.log("inside else If")
 			document.querySelector("body").addEventListener('click',function(){
 				console.log("----------display not Account flyout-----------");
 				document.querySelector(".met-account-flyout").style.display = "none";
