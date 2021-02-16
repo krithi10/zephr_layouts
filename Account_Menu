@@ -126,10 +126,10 @@ html[data-content-mobile] .met-account-flyout.closed {
 <script>
 (() => {
   let elem = document.querySelector("[data-reg-role='navigation']");
+  let accFlyoutElem = document.querySelector(".met-account-flyout");
   if(elem){
   	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
 		console.log("----------loading Account flyout-----------");
-  		let accFlyoutElem = document.querySelector(".met-account-flyout");
 		document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
 		if(accFlyoutElem.style.display === "none"){
 		console.log("----------display Account flyout-----------");
@@ -142,9 +142,12 @@ html[data-content-mobile] .met-account-flyout.closed {
   	});
 	document.querySelector("body").addEventListener('click',function(){
 		console.log("inside body")
+		if(accFlyoutElem.style.display === "block"){
+			document.querySelector(".met-account-flyout").style.display = "none";
+		}	
   	});
   }
-  })();
+})();
     /*DSS-14457: Start*/
   trb.metering.manager.user.subscriptions(function(subs) {
     if(subs.length > 0)
