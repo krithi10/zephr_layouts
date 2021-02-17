@@ -12,6 +12,7 @@
   opacity: 1;
   z-index: 1;
   transition: all 0.3s ease-in-out 0s,visibility 0s linear 0s,z-index 0s linear 0.3s;
+  display: none;
 }
 .met-account-flyout.closed {
   visibility: hidden;
@@ -111,8 +112,9 @@ html[data-content-mobile] .met-account-flyout li a {
 html[data-content-mobile] .met-account-flyout.closed {
   transition-delay: 0.25s;
 }
+.show {display: block;}
 </style>
-<div class="met-account-flyout" style ="display:none">
+<div class="met-account-flyout">
 	<ul>
 	  <li><a href="#" data-reg-text data-reg-handler="profileHandler"></a></li>
 	  <li id="met-account-manage-sub"><a href="{{subscription-domain}}">Manage my Subscription</a></li>
@@ -128,20 +130,25 @@ html[data-content-mobile] .met-account-flyout.closed {
   let elem = document.querySelector("[data-reg-role='navigation']");
   let accFlyoutElem = document.querySelector(".met-account-flyout");
   if(elem){
+	document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
   	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
-		console.log("----------loading Account flyout-----------");
-		document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
-		if(accFlyoutElem.style.display === "none"){
-		console.log("----------display Account flyout-----------");
-			document.querySelector(".met-account-flyout").style.display = "block";
-		}
-		else{
-		console.log("----------display not Account flyout-----------");
-			document.querySelector(".met-account-flyout").style.display = "none";
-		}
+		 document.querySelector(".met-account-flyout").classList.toggle("show");
   	});
   }
+ window.onclick = function(event) {
+  if (!event.target.matches("[data-reg-handler='toggleNavigation']")) {
+    var dropdowns = document.querySelector(".met-account-flyout");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 })();
+
     /*DSS-14457: Start*/
   trb.metering.manager.user.subscriptions(function(subs) {
     if(subs.length > 0)
