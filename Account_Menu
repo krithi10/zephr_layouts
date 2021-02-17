@@ -128,25 +128,21 @@ html[data-content-mobile] .met-account-flyout.closed {
 <script>
 (() => {
   let elem = document.querySelector("[data-reg-role='navigation']");
-  let accFlyoutElem = document.querySelector(".met-account-flyout");
-   console.log("Loading Account Flyout");
   if(elem){
-	document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
   	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
-		 document.querySelector(".met-account-flyout").classList.toggle("show");
+		let accFlyoutElem = document.querySelector(".met-account-flyout");
+		console.log("----------loading Account flyout-----------");
+		document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
+		if(accFlyoutElem.style.display === "none"){
+		console.log("----------display Account flyout-----------");
+			document.querySelector(".met-account-flyout").style.display = "block";
+		}
+		else{
+		console.log("----------display not Account flyout-----------");
+			document.querySelector(".met-account-flyout").style.display = "none";
+		}
   	});
   }
- window.onclick = function(event) {
-	 console.log("Window Event");
-  if (!event.target.matches("[data-reg-handler='toggleNavigation']")) {
-	   console.log("Toggle");
-    var dropdowns = document.querySelector(".met-account-flyout");
-	if (dropdowns.classList.contains('show')) {
-	       console.log("remove dont display acct Flyout");
-        dropdowns.classList.remove('show');
-      }
-  }
-}
 })();
 
     /*DSS-14457: Start*/
