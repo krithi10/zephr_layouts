@@ -137,15 +137,14 @@ html[data-content-mobile] .met-account-flyout.closed {
   	});
   }
  window.onclick = function(event) {
+	 console.log("Window Event");
   if (!event.target.matches("[data-reg-handler='toggleNavigation']")) {
+	   console.log("Toggle");
     var dropdowns = document.querySelector(".met-account-flyout");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+	if (dropdowns.classList.contains('show')) {
+	       console.log("remove dont display acct Flyout");
+        dropdowns.classList.remove('show');
       }
-    }
   }
 }
 })();
