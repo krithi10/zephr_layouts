@@ -130,6 +130,7 @@ html[data-content-mobile] .met-account-flyout.closed {
   let elem = document.querySelector("[data-reg-role='navigation']");
   let accFlyoutElem = document.querySelector(".met-account-flyout");
   if(elem){
+	  console.log("Loading Account Flyout");
 	document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
   	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
 		 document.querySelector(".met-account-flyout").classList.toggle("show");
