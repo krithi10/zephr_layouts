@@ -12,7 +12,6 @@
   opacity: 1;
   z-index: 1;
   transition: all 0.3s ease-in-out 0s,visibility 0s linear 0s,z-index 0s linear 0.3s;
-  display: none;
 }
 .met-account-flyout.closed {
   visibility: hidden;
@@ -114,7 +113,7 @@ html[data-content-mobile] .met-account-flyout.closed {
 }
 .show {display: block;}
 </style>
-<div class="met-account-flyout">
+<div class="met-account-flyout" style="display:none">
 	<ul>
 	  <li><a href="#" data-reg-text data-reg-handler="profileHandler"></a></li>
 	  <li id="met-account-manage-sub"><a href="{{subscription-domain}}">Manage my Subscription</a></li>
