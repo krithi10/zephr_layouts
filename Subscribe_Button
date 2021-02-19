@@ -51,6 +51,7 @@ trb.metering.manager.user.mobile(function(tablet) {
 -->
 <script>
 (() => {
+debugger;
 	console.log("--------------Placement Target :{{placement-target}}-------------");
 	let subButtonElem = document.querySelector(".dss-button");
 	let placementTarget = '{{placement-target}}';
