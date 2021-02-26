@@ -50,7 +50,10 @@ trb.metering.manager.user.mobile(function(tablet) {
 </script>
 -->
 <script>
-(() => {
+var lock = '3efr45vf6gfrd57r';
+((scope) => {
+  if (scope[lock]) return;
+  scope[lock] = true;
 	console.log("--------------Placement Target :{{placement-target}}-------------");
 	let placementTarget = '{{placement-target}}';
 	if(placementTarget !== 'trial'){
@@ -72,5 +75,5 @@ trb.metering.manager.user.mobile(function(tablet) {
 	    console.log("--------------Topic Flyout-------------");
 	    document.querySelector("[data-reg-role='trial']").appendChild(topicFlyoutElem);
 	}
-})();
+})(Window);
 </script>
