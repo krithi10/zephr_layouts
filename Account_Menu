@@ -125,7 +125,10 @@ html[data-content-mobile] .met-account-flyout.closed {
 </div>
 
 <script>
-(() => {
+var lock = '3efr45vf6gfrd57r';
+((scope) => {
+  if (scope[lock]) return;
+  scope[lock] = true;
   let elem = document.querySelector("[data-reg-role='navigation']");
   if(elem){
   	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
@@ -142,7 +145,7 @@ html[data-content-mobile] .met-account-flyout.closed {
 		}
   	});
   }
-})();
+})(Window);
 
     /*DSS-14457: Start*/
   trb.metering.manager.user.subscriptions(function(subs) {
