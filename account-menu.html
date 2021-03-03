@@ -113,7 +113,7 @@ html[data-content-mobile] .met-account-flyout.closed {
 }
 .show {display: block;}
 </style>
-<div class="met-account-flyout" style="display:none !important">
+<div class="met-account-flyout">
 	<ul>
 	  <li><a href="#" data-reg-text data-reg-handler="profileHandler"></a></li>
 	  <li id="met-account-manage-sub"><a href="{{subscription-domain}}">Manage my Subscription</a></li>
@@ -132,9 +132,11 @@ var lock = '3efr45vf6gfrd57r';
   let elem = document.querySelector("[data-reg-role='navigation']");
   let accFlyoutElem = document.querySelector(".met-account-flyout");
   if(elem){
-	document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
   	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
 		console.log("----------loading Account flyout-----------");
+		if(!document.querySelector("[data-reg-role='navigation']").hasChildNodes()){
+			document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
+		}
 		document.querySelector(".met-account-flyout").classList.toggle("show");
   	});
   }
