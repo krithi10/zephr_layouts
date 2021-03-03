@@ -126,25 +126,29 @@ html[data-content-mobile] .met-account-flyout.closed {
 </div>
 
 <script>
-(() => {
+var lock = '3efr45vf6gfrd57r';
+((scope) => {
+  if (scope[lock]) return;
+  scope[lock] = true;
   let elem = document.querySelector("[data-reg-role='navigation']");
+  let accFlyoutElem = document.querySelector(".met-account-flyout");
   if(elem){
-	  let accFlyoutElem = document.querySelector(".met-account-flyout");
-		console.log("----------Account flyout-----------");
-		document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
+	document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
   	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
-		if(accFlyoutElem.style.display === "none"){
-		console.log("----------display Account flyout-----------");
-			document.querySelector(".met-account-flyout").style.display = "block";
-		}
-		else{
-		console.log("----------display not Account flyout-----------");
-			document.querySelector(".met-account-flyout").style.display = "none";
-		}
+		 document.querySelector(".met-account-flyout").classList.toggle("show");
   	});
   }
-})();
-
+  window.onclick = function(event) {
+	 console.log("Window Event");
+  if (!event.target.matches("[data-reg-handler='toggleNavigation']")) {
+	   console.log("Toggle");
+	if (accFlyoutElem.classList.contains('show')) {
+	       console.log("remove dont display acct Flyout");
+        accFlyoutElem.classList.remove('show');
+      }
+  }
+}
+})(Window);
     /*DSS-14457: Start*/
   trb.metering.manager.user.subscriptions(function(subs) {
     if(subs.length > 0)
