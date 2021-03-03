@@ -132,11 +132,9 @@ var lock = '3efr45vf6gfrd57r';
   let elem = document.querySelector("[data-reg-role='navigation']");
   let accFlyoutElem = document.querySelector(".met-account-flyout");
   if(elem){
+	document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
   	document.querySelector("[data-reg-handler='toggleNavigation']").addEventListener('click',function(){
 		console.log("----------loading Account flyout-----------");
-		if(!document.querySelector("[data-reg-role='navigation']").hasChildNodes()){
-			document.querySelector("[data-reg-role='navigation']").appendChild(accFlyoutElem);
-		}
 		document.querySelector(".met-account-flyout").classList.toggle("show");
   	});
   }
