@@ -119,7 +119,7 @@ html[data-content-mobile] .met-account-flyout.closed {
 	  <li id="met-account-manage-sub"><a href="{{subscription-domain}}">Manage my Subscription</a></li>
 	  <li class="met-account-newsletters-var{{variation}}"><a href="#" data-reg-handler="newsletterHandler">Newsletters</a></li>
 	  <li class="met-account-extra"><a href="{{contact-url}}">CONTACT US</a></li>
-	  <li class="met-button-container-var{{variation}}"><a class="met-button-var{{variation}}" href="{{subscribe-Url}}" data-met-return><b>{{subscribe-text}}<br>{{offer-text}}</b></a></li>
+	  <li class="met-button-container-var{{variation}}"><a class="met-button-var{{variation}}" href="{{subscribe-url}}" data-met-return><b>{{subscribe-text}}<br>{{offer-text}}</b></a></li>
 	  <li><a href="#" data-reg-handler="signOutHandler">LOG OUT</a></li>
 	</ul>
 </div>
