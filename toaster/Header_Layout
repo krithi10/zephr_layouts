@@ -74,11 +74,11 @@
     transform: rotate(-45deg);
 }
 
-@media only screen and (min-width: 548px) {
+/*@media only screen and (min-width: 548px) {
   .met-header-toast {
     display: none;
   }
-}
+}*/
 </style>
 <div class="met-flyout met-header-toast">
 	<div class="met-toast-close{{closeable}}">
@@ -91,10 +91,11 @@
 	let elem = document.querySelector("[data-reg-role='prompt']");
 	if(elem){
 	let toasterElem = document.querySelector(".met-header-toast");
+	console.log('-----Mobile Toaster-----------')
 	document.querySelector("[data-reg-role='prompt']").appendChild(toasterElem);
 		if(elem.hasAttribute("data-dss-condense") && elem.getAttribute("data-dss-condense")==="true"){
-		  document.querySelector(".met-header-toast").style.height="40px";
-		  document.querySelector(".met-flyout-close").style.display="none";  
+		  	document.querySelector(".met-header-toast").style.height="40px";
+		  	document.querySelector(".met-flyout-close").style.display="none";  
 	       }
 	}
 })();
