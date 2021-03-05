@@ -190,7 +190,8 @@
 	})();
 	 $('.met-flyout-close').click(function() {
          	console.log('-----close button clicked----------');
-		document.querySelector(".met-footer-toast").style.display="none"
+		document.querySelector(".met-footer-toast").style.display="none";
+		document.querySelector(".met-footer-toast").classList.add("closed");
         });
 //    (function() {
 //    trb.metering.manager.user.track(function(data) {
