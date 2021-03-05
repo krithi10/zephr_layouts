@@ -182,12 +182,14 @@
 <script>
 	(() => {
 		let bodyElem = document.querySelector("body");
-		document.querySelector(".met-footer-toast").style.display="none";
 		if(bodyElem && (new Date(localStorage.getItem("trb.zephr.closeDates")) < new Date() || localStorage.getItem("trb.zephr.closeDates")===null)){
 			let toasterElem = document.querySelector(".met-footer-toast");
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
 			console.log('-----Display Desktop-Toaster----------');
+		}else{
+			console.log('-----No Desktop-Toaster----------');
+			document.querySelector(".met-footer-toast").style.display="none";
 		}
 	})();
 	 $('.met-flyout-close').click(function() {
