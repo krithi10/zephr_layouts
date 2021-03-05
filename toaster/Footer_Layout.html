@@ -23,17 +23,7 @@
   font: inherit;
   box-sizing: inherit;
 }
-/*.met-footer-toast.closed {
-  -webkit-transform: translateY(150%);
-  -moz-transform: translateY(150%);
-  -ms-transform: translateY(150%);
-  -o-transform: translateY(150%);
-  transform: translateY(150%);
-  -webkit-transition: -webkit-transform 0.15s linear;
-  -moz-transition: -moz-transform 0.15s linear;
-  transition: transform 0.15s linear;
-}*/
-.met-flyout-close {
+.met-footer-toast.closed {
   -webkit-transform: translateY(150%);
   -moz-transform: translateY(150%);
   -ms-transform: translateY(150%);
@@ -165,6 +155,9 @@
     display: none;
   }
 }
+.closed {
+ display: none;	
+}
 </style>
 <div class="met-flyout met-footer-toast">
 	<div class="met-toast-var{{variation}}" role="complementary" aria-labelledby="trialHeading">
@@ -190,7 +183,7 @@
 	})();
 	 $('.met-flyout-close').click(function() {
          	console.log('-----close button clicked----------');
-		document.querySelector(".met-footer-toast").style.display="none"
+		document.querySelector(".met-footer-toast").className += ' closed';
         });
 //    (function() {
 //    trb.metering.manager.user.track(function(data) {
