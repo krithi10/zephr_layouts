@@ -192,8 +192,7 @@
 			document.querySelector(".met-footer-toast").style.display="none";
 		}
 	})();
-	 $('.met-flyout-close').click(function(e) {
-		 e.preventDefault();
+	 $('.met-flyout-close').click(function() {
          	console.log('-----close button clicked----------');
 		 if(!document.querySelector(".met-footer-toast").classList.contains("closed")){
 		    	let closeDate = new Date();
