@@ -190,7 +190,10 @@
 	})();
 	 $('.met-flyout-close').click(function() {
          	console.log('-----close button clicked----------');
-		 if(!document.querySelector(".met-footer-toast").classList.contains("closed")){
+		 if(!document.querySelector(".met-footer-toast").classList.contains("closed") && localStorage.getItem("trb.zephr.closeDates")>new Date()){
+		    	let closeDate = new Date();
+			closeDate.setDate(closeDate.getDate() + 1);
+			localStorage.setItem("trb.zephr.closeDates", closeDate);
 		 	document.querySelector(".met-footer-toast").classList.add("closed");
 			document.querySelector(".met-footer-toast").style.display="none";
 		 }
