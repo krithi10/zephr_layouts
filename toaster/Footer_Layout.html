@@ -196,7 +196,7 @@
          	console.log('-----close button clicked----------');
 		 if(!document.querySelector(".met-footer-toast").classList.contains("closed")){
 		    	let closeDate = new Date();
-			closeDate.setDate(closeDate.getDate() + 3);
+			closeDate.setDate(closeDate.getDate() + 2);
 			localStorage.setItem("trb.zephr.closeDates", closeDate);
 		 	document.querySelector(".met-footer-toast").classList.add("closed");
 			document.querySelector(".met-footer-toast").style.display="none";
