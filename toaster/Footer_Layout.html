@@ -182,8 +182,9 @@
 <script>
 	(() => {
 		let bodyElem = document.querySelector("body");
+		
 		document.querySelector(".met-footer-toast").style.display="none";
-		if(bodyElem && localStorage.getItem("trb.zephr.closeDates")>new Date()){
+		if(bodyElem && new Date(localStorage.getItem("trb.zephr.closeDates")) < new Date()){
 			let toasterElem = document.querySelector(".met-footer-toast");
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
