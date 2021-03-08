@@ -185,7 +185,7 @@
 		let bodyElem = document.querySelector("body");
 		let toasterElem = document.querySelector(".met-footer-toast");
 		let closeData = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): null;
-		let isCloseDate = closeData!== null ? new Date(closeData.closeDate) < new Date() : false;
+		let isCloseDate = closeData===null ? true : new Date(closeData.closeDate) < new Date();
 		if(bodyElem && isCloseDate){
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
