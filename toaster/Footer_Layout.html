@@ -189,17 +189,17 @@
 			console.log('-----Display Desktop-Toaster----------');
 		}else{
 			console.log('-----No Desktop-Toaster----------');
-			document.querySelector(".met-footer-toast").style.display="none";
+			document.querySelector(".met-footer-toast").remove();
 		}
 	})();
 	 $('.met-flyout-close').click(function() {
          	console.log('-----close button clicked----------');
 		 if(!document.querySelector(".met-footer-toast").classList.contains("closed")){
-		    	let closeDate = new Date();
-			closeDate.setDate(closeDate.getDate() + 2);
-			localStorage.setItem("trb.zephr.closeDates", closeDate);
+			let closeDetails = {'closeDate': new Date(), 'closeStatus':'closed' };
+			closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + {{reset-days}}); 
+			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeDetails));
 		 	document.querySelector(".met-footer-toast").classList.add("closed");
-			document.querySelector(".met-footer-toast").style.display="none";
+			document.querySelector(".met-footer-toast").remove();
 		 }
         });
 //    (function() {
