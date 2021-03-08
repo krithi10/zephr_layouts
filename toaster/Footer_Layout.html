@@ -193,7 +193,8 @@
 			document.querySelector(".met-footer-toast").remove();
 		}
 	})();
-	 $('.met-flyout-close').click(function() {
+	 $('.met-flyout-close').click(function(e) {
+		  e.preventDefault();
 		 let toasterElem = document.querySelector(".met-footer-toast");
          	console.log('-----close button clicked----------');
 		 if(toasterElem && !toasterElem.classList.contains("closed")){
