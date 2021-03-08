@@ -193,6 +193,7 @@
 		}
 	})();
 	 $('.met-flyout-close').click(function() {
+		 let toasterElem = document.querySelector(".met-footer-toast");
          	console.log('-----close button clicked----------');
 		 if(toasterElem && !toasterElem.classList.contains("closed")){
 			let closeDetails = {'closeDate': new Date(), 'closeStatus':'closed' };
