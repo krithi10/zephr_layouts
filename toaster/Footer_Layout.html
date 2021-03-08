@@ -182,8 +182,8 @@
 <script>
 	(() => {
 		let bodyElem = document.querySelector("body");
+		let toasterElem = document.querySelector(".met-footer-toast");
 		if(bodyElem && (new Date(localStorage.getItem("trb.zephr.closeDates")) < new Date() || localStorage.getItem("trb.zephr.closeDates")===null)){
-			let toasterElem = document.querySelector(".met-footer-toast");
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
 			console.log('-----Display Desktop-Toaster----------');
@@ -194,12 +194,10 @@
 	})();
 	 $('.met-flyout-close').click(function() {
          	console.log('-----close button clicked----------');
-		 console.log('reset-days', {{reset-days}});
-		 console.log('reset-days', '{{reset-days}}');
-		 if(!document.querySelector(".met-footer-toast").classList.contains("closed")){
+		 if(toasterElem && !toasterElem.classList.contains("closed")){
 			let closeDetails = {'closeDate': new Date(), 'closeStatus':'closed' };
-			closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + 0); 
-			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeDetails));
+			closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + 60); 
+			localStorage.setItem("trb.zephr.closeDates", closeDetails);
 		 	document.querySelector(".met-footer-toast").classList.add("closed");
 			document.querySelector(".met-footer-toast").remove();
 		 }
