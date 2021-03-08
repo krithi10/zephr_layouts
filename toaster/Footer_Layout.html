@@ -187,7 +187,8 @@
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
 			console.log('-----Display Desktop-Toaster----------');
-		}else{
+		}
+		else{
 			console.log('-----No Desktop-Toaster----------');
 			document.querySelector(".met-footer-toast").remove();
 		}
@@ -196,9 +197,9 @@
 		 let toasterElem = document.querySelector(".met-footer-toast");
          	console.log('-----close button clicked----------');
 		 if(toasterElem && !toasterElem.classList.contains("closed")){
-			let closeDetails = {'closeDate': new Date(), 'closeStatus':'closed' };
-			closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + 60); 
-			localStorage.setItem("trb.zephr.closeDates", closeDetails);
+			let closeDate =  new Date();
+			closeDate.setDate(closeDate.getDate() + 60); 
+			localStorage.setItem("trb.zephr.closeDates", closeDate);
 		 	document.querySelector(".met-footer-toast").classList.add("closed");
 			document.querySelector(".met-footer-toast").remove();
 		 }
