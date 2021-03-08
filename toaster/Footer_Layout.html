@@ -181,6 +181,7 @@
 </div>
 <script>
 	(() => {
+		debugger;
 		let bodyElem = document.querySelector("body");
 		let toasterElem = document.querySelector(".met-footer-toast");
 		let closedDetails = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): null;
@@ -196,6 +197,7 @@
 		}
 	})();
 	 $('.met-flyout-close').click(function(e) {
+		 debugger;
 		  e.preventDefault();
 		 let toasterElem = document.querySelector(".met-footer-toast");
          	console.log('-----close button clicked----------');
