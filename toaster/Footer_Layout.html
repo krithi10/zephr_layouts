@@ -181,12 +181,11 @@
 </div>
 <script>
 	(() => {
-		debugger;
 		let bodyElem = document.querySelector("body");
 		let toasterElem = document.querySelector(".met-footer-toast");
 		let closeData = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): null;
 		let isExpired = closeData===null ? true : new Date(closeData.closeDate) < new Date();
-		if(bodyElem && (isExpired){
+		if(bodyElem && isExpired){
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
 			console.log('-----Display Desktop-Toaster----------');
@@ -197,13 +196,12 @@
 		}
 	})();
 	 $('.met-flyout-close').click(function(e) {
-		 debugger;
 		  e.preventDefault();
 		 let toasterElem = document.querySelector(".met-footer-toast");
-         	console.log('-----close button clicked----------');
+         		console.log('-----close button clicked----------');
 		 if(toasterElem && !toasterElem.classList.contains("closed")){
 			let closeDetails = {'closeDate' :  new Date(), 'status': 'closed'};
-			closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + 60); // Set in days in zephr variable
+			closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + 60); // Need to set 60 days in zephr variable
 			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeDetails));
 		 	document.querySelector(".met-footer-toast").classList.add("closed");
 			document.querySelector(".met-footer-toast").remove();
