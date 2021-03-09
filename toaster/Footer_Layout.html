@@ -199,6 +199,8 @@
 		  e.preventDefault();
 		 let toasterElem = document.querySelector(".met-footer-toast");
          		console.log('-----close button clicked----------');
+		 	console.log('-----reset-days----------', {{reset-days}});
+		 	console.log('-----reset-days----------', '{{reset-days}}');
 		 if(toasterElem && !toasterElem.classList.contains("closed")){
 			let closeDetails = {'closeDate' :  new Date(), 'status': 'closed'};
 			closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + 60); // Need to set 60 days in zephr variable
