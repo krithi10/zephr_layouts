@@ -107,14 +107,14 @@
 	if(elem && isCloseDateExpired && isNewCampaign){
 		document.querySelector("[data-reg-role='prompt']").appendChild(toasterElem);
 		document.querySelector(".met-header-toast").style.display="block";
-		console.log('-----Display Desktop-Toaster----------');
+		console.log('-----Display Mobile-Toaster----------');
 		if(elem.hasAttribute("data-dss-condense") && elem.getAttribute("data-dss-condense")==="true"){
 		  	document.querySelector(".met-header-toast").style.height="40px";
 		  	document.querySelector(".met-flyout-close").style.display="none";  
 	       }
 	}
 	else{
-		console.log('-----No Desktop-Toaster----------');
+		console.log('-----No Mobile-Toaster----------');
 		document.querySelector(".met-header-toast").remove();
 	}
 })();
