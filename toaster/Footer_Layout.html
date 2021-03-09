@@ -186,7 +186,7 @@
 		let closeData = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): null;
 		let isCloseDateExpired = (closeData===null || closeData.closeDate===null) ? true : new Date() > new Date(closeData.closeDate);
 		let isNewCampaign = (closeData ===null || closeData.campaign===null) ? true : (closeData.campaign !== '{{campaign}}') ? true : false;
-		if(bodyElem && isCloseDateExpired && isNewCampaign){
+		if(bodyElem && (isCloseDateExpired || isNewCampaign)){
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
 			console.log('-----Display Desktop-Toaster----------');
