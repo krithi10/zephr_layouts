@@ -99,7 +99,8 @@
 	       }
 	}
 })();
- $('.met-flyout-close').click(function() {
+ $('.met-flyout-close').click(function(e) {
+ 		 e.preventDefault();
          	console.log('-----close button clicked----------');
 		document.querySelector(".met-header-toast").style.display="none"
  });
