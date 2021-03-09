@@ -88,7 +88,7 @@
 </div>
 <script>
 (() => {
-	let elem = document.querySelector("[data-reg-role='prompt']");
+	/*let elem = document.querySelector("[data-reg-role='prompt']");
 	if(elem){
 	let toasterElem = document.querySelector(".met-header-toast");
 	console.log('-----Mobile Toaster-----------')
@@ -97,11 +97,40 @@
 		  	document.querySelector(".met-header-toast").style.height="40px";
 		  	document.querySelector(".met-flyout-close").style.display="none";  
 	       }
+	}*/
+	
+	let elem = document.querySelector("[data-reg-role='prompt']");
+	let toasterElem = document.querySelector(".met-header-toast");
+	let closeData = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): null;
+	let isCloseDateExpired = (closeData===null || closeData.closeDate===null) ? true : new Date() > new Date(closeData.closeDate);
+	let isNewCampaign = (closeData ===null || closeData.campaign===null) ? true : (closeData.campaign !== '{{campaign}}') ? true : false;
+	if(elem && isCloseDateExpired && isNewCampaign){
+		document.querySelector("[data-reg-role='prompt']").appendChild(toasterElem);
+		document.querySelector(".met-header-toast").style.display="block";
+		console.log('-----Display Desktop-Toaster----------');
+		if(elem.hasAttribute("data-dss-condense") && elem.getAttribute("data-dss-condense")==="true"){
+		  	document.querySelector(".met-header-toast").style.height="40px";
+		  	document.querySelector(".met-flyout-close").style.display="none";  
+	       }
+	}
+	else{
+		console.log('-----No Desktop-Toaster----------');
+		document.querySelector(".met-header-toast").remove();
 	}
 })();
  $('.met-flyout-close').click(function(e) {
  		 e.preventDefault();
          	console.log('-----close button clicked----------');
-		document.querySelector(".met-header-toast").style.display="none"
+		//document.querySelector(".met-header-toast").style.display="none";
+		let toasterElem = document.querySelector(".met-header-toast");
+		if(toasterElem && !toasterElem.classList.contains("closed")){
+			let closeDetails = {'campaign': '{{campaign}}','closeDate' :  new Date(), 'status': 'closed'};
+			closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + {{reset-days}}); 
+			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeDetails));
+		 	document.querySelector(".met-header-toast").classList.add("closed");
+			document.querySelector(".met-header-toast").remove();
+		 }
+		
+		
  });
 </script>
