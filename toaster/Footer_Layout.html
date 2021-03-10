@@ -191,7 +191,6 @@
 		const newCloseArry = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
 			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(newCloseArry));
 		if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
-			console.log('in if condition')
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
 			console.log('-----Display Desktop-Toaster----------');
