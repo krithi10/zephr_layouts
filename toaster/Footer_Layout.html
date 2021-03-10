@@ -188,7 +188,7 @@
 		//let isCloseDateExpired = (closeData===null || closeData.closeDate===null) ? true : new Date() > new Date(closeData.closeDate);
 		//let isNewCampaign = (closeData ===null || closeData.campaign===null) ? true : (closeData.campaign !== '{{campaign}}') ? true : false;
 		
-		let closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): null;
+		let closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
 		console.log("closeArry", closeArry);
 		const abc =closeArry.filter(closeData => new Date() < new Date(closeData.closeDate));
 		const xyz =closeArry.filter(closeData => closeData.campaign === '{{campaign}}');
