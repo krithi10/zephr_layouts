@@ -201,9 +201,13 @@
 		 let toasterElem = document.querySelector(".met-footer-toast");
          		console.log('-----close button clicked----------');
 		 if(toasterElem && !toasterElem.classList.contains("closed")){
+			let closeArry =[];
 			let closeDetails = {'campaign': '{{campaign}}','closeDate' :  new Date(), 'status': 'closed'};
+			 closeArry.push(closeDetails)
+			
 			closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + {{reset-days}}); 
 			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeDetails));
+			localStorage.setItem("trb.zephr.test", JSON.stringify(closeArry));
 		 	document.querySelector(".met-footer-toast").classList.add("closed");
 			document.querySelector(".met-footer-toast").remove();
 		 }
