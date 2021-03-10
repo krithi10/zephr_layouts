@@ -193,9 +193,10 @@
 		const xyz =closeArry.filter(closeData => closeData.campaign === '{{campaign}}');
 		const www = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
 		const newcloseArry = [];
-		newcloseArry.push(www);
-		localStorage.setItem("trb.zephr.closeDates", JSON.stringify(newcloseArry));
-		
+		if(newcloseArry.length===0){
+			newcloseArry.push(www);
+			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(newcloseArry));
+		}
 		if(abc.length === 0 || xyz.length === 0){
 			console.log('in if condition')
 			document.querySelector("body").appendChild(toasterElem);
