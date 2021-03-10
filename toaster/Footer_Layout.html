@@ -180,8 +180,11 @@
 	</div>
 </div>
 <script>
-	(() => {
-		debugger;
+	var lock = 'toaster-header';
+	((scope) => {
+	  debugger;
+	  if (scope[lock]) return;
+	  scope[lock] = true;		
 		let bodyElem = document.querySelector("body");
 		let toasterElem = document.querySelector(".met-footer-toast");
 		//let closeData = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): null;
@@ -212,7 +215,7 @@
 			console.log('-----No Desktop-Toaster----------');
 			document.querySelector(".met-footer-toast").remove();
 		}
-	})();
+	})(Window);
 	 $('.met-flyout-close').click(function(e) {
 		 debugger;
 		  e.preventDefault();
