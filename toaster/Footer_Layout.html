@@ -214,7 +214,7 @@
 		 let toasterElem = document.querySelector(".met-footer-toast");
          		console.log('-----close button clicked----------');
 		 if(toasterElem && !toasterElem.classList.contains("closed")){
-			let closeArry =[];
+			let closeArry =JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
 			let closeDetails = {'campaign': '{{campaign}}','closeDate' :  new Date(), 'status': 'closed'};
 			 closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + {{reset-days}}); 
 			 closeArry.push(closeDetails);
