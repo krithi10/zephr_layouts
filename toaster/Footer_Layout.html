@@ -189,9 +189,12 @@
 		//let isNewCampaign = (closeData ===null || closeData.campaign===null) ? true : (closeData.campaign !== '{{campaign}}') ? true : false;
 		
 		let closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
-		console.log("closeArry", closeArry);
 		const abc =closeArry.filter(closeData => new Date() < new Date(closeData.closeDate));
 		const xyz =closeArry.filter(closeData => closeData.campaign === '{{campaign}}');
+		const www = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
+		closeArry.push(www);
+		localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
+		
 		if(abc.length === 0 || xyz.length === 0){
 			console.log('in if condition')
 			document.querySelector("body").appendChild(toasterElem);
