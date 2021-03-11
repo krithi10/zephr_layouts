@@ -189,8 +189,8 @@
 		//const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
 		//const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)>180);
 		
-		const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - (closeData.closeDate)/(1000 * 3600 * 24) < 180);
-		const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - (closeData.closeDate)/(1000 * 3600 * 24) > 180);
+		const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.closeDate)/(1000 * 3600 * 24)<180);
+		const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.closeDate)/(1000 * 3600 * 24)>180);
 		
 		if(exceedDate.length>0 && withinDate.length!==0){
 			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(withinDate));
