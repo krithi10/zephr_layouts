@@ -214,7 +214,7 @@
 				 if(toasterElem && !toasterElem.classList.contains("closed")){
 					let closeArry =JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
 					const closeDate = new Date().getTime() + (86400000*{{reset-days}});
-					let closeDetails = {'campaign': '{{slug}}','expirationDate' :  closeDate, 'status': 'closed'};
+					const closeDetails = {'campaign': '{{slug}}','expirationDate' :  closeDate, 'status': 'closed'};
 					 closeArry.push(closeDetails);
 					localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
 					document.querySelector(".met-footer-toast").classList.add("closed");
