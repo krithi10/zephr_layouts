@@ -198,7 +198,8 @@
 			localStorage.removeItem("trb.zephr.closeDates");
 		}
 		
-		const closedDateCheck = withinDate.filter(closeData => new Date() < new Date(closeData.closeDate));
+		//const closedDateCheck = withinDate.filter(closeData => new Date() < new Date(closeData.closeDate));
+		const closedDateCheck = withinDate.filter(closeData => new Date().getTime() < closeData.closeDate);
 		const newCampaignCheck = withinDate.filter(closeData => closeData.campaign === '{{campaign}}');
 		if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
 			document.querySelector("body").appendChild(toasterElem);
