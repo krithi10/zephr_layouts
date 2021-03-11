@@ -190,7 +190,7 @@
 		const newCampaignCheck =closeArry.filter(closeData => closeData.campaign === '{{campaign}}');
 		const newCloseArry = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
 		
-		if(closeArry.length!== newCloseArry.length){
+		if(closeArry.length!== newCloseArry.length || (closeArry.length !== [] && newCloseArry.length !==[])){
 			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(newCloseArry));
 		}
 		if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
