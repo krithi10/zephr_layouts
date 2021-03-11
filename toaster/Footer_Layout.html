@@ -195,7 +195,7 @@
 			localStorage.removeItem("trb.zephr.closeDates");
 		}
 		const closedDateCheck = withinDate.filter(closeData => new Date().getTime() < closeData.expirationDate);
-		const newCampaignCheck = withinDate.filter(closeData => closeData.campaign === '{{campaign}}');
+		const newCampaignCheck = withinDate.filter(closeData => closeData.campaign === '{{slug}}');
 		if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
@@ -214,7 +214,7 @@
 				 if(toasterElem && !toasterElem.classList.contains("closed")){
 					let closeArry =JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
 					const closeDate = new Date().getTime() + (86400000*{{reset-days}});
-					let closeDetails = {'campaign': '{{campaign}}','expirationDate' :  closeDate, 'status': 'closed'};
+					let closeDetails = {'campaign': '{{slug}}','expirationDate' :  closeDate, 'status': 'closed'};
 					 closeArry.push(closeDetails);
 					localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
 					document.querySelector(".met-footer-toast").classList.add("closed");
