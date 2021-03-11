@@ -186,9 +186,6 @@
 	  scope[lock] = true;		
 		let toasterElem = document.querySelector(".met-footer-toast");
 		const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
-		//const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
-		//const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)>180);
-		
 		const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)<180);
 		const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)>180);
 		
@@ -197,8 +194,6 @@
 		}else if (withinDate.length===0){
 			localStorage.removeItem("trb.zephr.closeDates");
 		}
-		
-		//const closedDateCheck = withinDate.filter(closeData => new Date() < new Date(closeData.closeDate));
 		const closedDateCheck = withinDate.filter(closeData => new Date().getTime() < closeData.expirationDate);
 		const newCampaignCheck = withinDate.filter(closeData => closeData.campaign === '{{campaign}}');
 		if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
@@ -220,10 +215,7 @@
 					let closeArry =JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
 					const closeDate = new Date().getTime() + (86400000*{{reset-days}});
 					let closeDetails = {'campaign': '{{campaign}}','expirationDate' :  closeDate, 'status': 'closed'};
-					// closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + {{reset-days}}); 
-					  //closeDetails.closeDate.setDate(closeDetails.closeDate + (86400000*{{reset-days}})); 
 					 closeArry.push(closeDetails);
-					//localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeDetails));
 					localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
 					document.querySelector(".met-footer-toast").classList.add("closed");
 					document.querySelector(".met-footer-toast").remove();
@@ -231,20 +223,4 @@
 			  });
 		}
 	})(Window);
-		 /*$('.met-flyout-close').click(function(e) {
-		  e.preventDefault();
-		 let toasterElem = document.querySelector(".met-footer-toast");
-         		console.log('-----close button clicked----------');
-		 if(toasterElem && !toasterElem.classList.contains("closed")){
-			let closeArry =JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
-			let closeDetails = {'campaign': '{{campaign}}','closeDate' :  new Date(), 'status': 'closed'};
-			// closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + {{reset-days}}); 
-			  closeDetails.closeDate.setDate(closeDetails.closeDate.getTime() + (86400000*{{reset-days}})); 
-			 closeArry.push(closeDetails);
-			//localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeDetails));
-			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
-		 	document.querySelector(".met-footer-toast").classList.add("closed");
-			document.querySelector(".met-footer-toast").remove();
-		 }
-        });*/
 </script>
