@@ -189,7 +189,10 @@
 		const closedDateCheck =closeArry.filter(closeData => new Date() < new Date(closeData.closeDate));
 		const newCampaignCheck =closeArry.filter(closeData => closeData.campaign === '{{campaign}}');
 		const newCloseArry = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
+		
+		if(closeArry.length!== newCloseArry.length){
 			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(newCloseArry));
+		}
 		if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
 			document.querySelector("body").appendChild(toasterElem);
 			document.querySelector(".met-footer-toast").style.display="block";
