@@ -186,8 +186,11 @@
 	  scope[lock] = true;		
 		let toasterElem = document.querySelector(".met-footer-toast");
 		const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
-		const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
-		const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)>180);
+		//const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
+		//const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)>180);
+		
+		const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.closeDate/(1000 * 3600 * 24)<180);
+		const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.closeDate/(1000 * 3600 * 24)>180);
 		
 		if(exceedDate.length>0 && withinDate.length!==0){
 			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(withinDate));
@@ -214,7 +217,8 @@
 		 if(toasterElem && !toasterElem.classList.contains("closed")){
 			let closeArry =JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
 			let closeDetails = {'campaign': '{{campaign}}','closeDate' :  new Date(), 'status': 'closed'};
-			 closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + {{reset-days}}); 
+			// closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + {{reset-days}}); 
+			  closeDetails.closeDate.setDate(closeDetails.closeDate.getTime() + (86400000*{{reset-days}})); 
 			 closeArry.push(closeDetails);
 			//localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeDetails));
 			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
