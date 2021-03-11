@@ -211,7 +211,23 @@
 			document.querySelector(".met-footer-toast").remove();
 		}
 	})(Window);
-	 $('.met-flyout-close').click(function(e) {
+	document.querySelector('.met-flyout-close').addEventListener('click',function(){
+	   e.preventDefault();
+		 let toasterElem = document.querySelector(".met-footer-toast");
+         		console.log('-----close button clicked----------');
+		 if(toasterElem && !toasterElem.classList.contains("closed")){
+			let closeArry =JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
+			let closeDetails = {'campaign': '{{campaign}}','closeDate' :  new Date(), 'status': 'closed'};
+			// closeDetails.closeDate.setDate(closeDetails.closeDate.getDate() + {{reset-days}}); 
+			  closeDetails.closeDate.setDate(closeDetails.closeDate.getTime() + (86400000*{{reset-days}})); 
+			 closeArry.push(closeDetails);
+			//localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeDetails));
+			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
+		 	document.querySelector(".met-footer-toast").classList.add("closed");
+			document.querySelector(".met-footer-toast").remove();
+		 }
+	}
+	 /*$('.met-flyout-close').click(function(e) {
 		  e.preventDefault();
 		 let toasterElem = document.querySelector(".met-footer-toast");
          		console.log('-----close button clicked----------');
@@ -226,5 +242,5 @@
 		 	document.querySelector(".met-footer-toast").classList.add("closed");
 			document.querySelector(".met-footer-toast").remove();
 		 }
-        });
+        });*/
 </script>
