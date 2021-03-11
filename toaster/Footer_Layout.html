@@ -189,8 +189,8 @@
 		//const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)<180);
 		//const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - new Date(closeData.closeDate).getTime())/(1000 * 3600 * 24)>180);
 		
-		const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.closeDate)/(1000 * 3600 * 24)<180);
-		const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.closeDate)/(1000 * 3600 * 24)>180);
+		const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)<180);
+		const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)>180);
 		
 		if(exceedDate.length>0 && withinDate.length!==0){
 			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(withinDate));
@@ -199,7 +199,7 @@
 		}
 		
 		//const closedDateCheck = withinDate.filter(closeData => new Date() < new Date(closeData.closeDate));
-		const closedDateCheck = withinDate.filter(closeData => new Date().getTime() < closeData.closeDate);
+		const closedDateCheck = withinDate.filter(closeData => new Date().getTime() < closeData.expirationDate);
 		const newCampaignCheck = withinDate.filter(closeData => closeData.campaign === '{{campaign}}');
 		if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
 			document.querySelector("body").appendChild(toasterElem);
