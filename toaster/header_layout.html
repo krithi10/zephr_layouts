@@ -132,8 +132,8 @@
 		}else if (withinDate.length===0){
 			localStorage.removeItem("trb.zephr.closeDates");
 		}
-		const closedDateCheck = withinDate.filter(closeData => new Date().getTime() < closeData.expirationDate);
-		const newCampaignCheck = withinDate.filter(closeData => closeData.campaign === '{{slug}}');
+		const closedDateCheck = withinDate.filter(closeData =>  closeData.campaign !== " " && new Date().getTime() < closeData.expirationDate);
+		const newCampaignCheck = withinDate.filter(closeData => closeData.campaign !== " " && closeData.campaign === '{{slug}}');
 		if(elem && (closedDateCheck.length === 0 || newCampaignCheck.length === 0)){
 			document.querySelector("[data-reg-role='prompt']").appendChild(toasterElem);
 			document.querySelector(".met-header-toast").style.display="block";
