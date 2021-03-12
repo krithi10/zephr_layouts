@@ -183,7 +183,9 @@
 	var lock = 'toaster-header';
 	((scope) => {
 	  if (scope[lock]) return;
-	  scope[lock] = true;		
+	  scope[lock] = true;	
+		console.log('test toaster', {{test}});
+		console.log('test2 toaster', '{{test}}')
 		let toasterElem = document.querySelector(".met-footer-toast");
 		const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
 		const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)<180);
