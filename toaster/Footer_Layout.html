@@ -218,6 +218,7 @@
 					const closeDate = new Date().getTime() + (86400000*{{reset-days}});
 					const closeDetails = {'campaign': '{{slug}}','expirationDate' :  closeDate, 'status': 'closed'};
 					 closeArry.push(closeDetails);
+					dataLayer.push(closeDetails);
 					localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
 					document.querySelector(".met-footer-toast").classList.add("closed");
 					document.querySelector(".met-footer-toast").remove();
