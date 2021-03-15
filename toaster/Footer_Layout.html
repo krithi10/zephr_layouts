@@ -1,234 +1,228 @@
 <style>
-.met-footer-toast {
-  height: 104px;
-  width: 100%;
-  padding: 24px 40px;
-  max-width: 1200px;
-  text-align: center;
-  font: 400 18px/24px {{font}}, Arial, sans-serif;
-  box-sizing: border-box;
-  background-color: {{background-color}};
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 0 1px 4px 0 #9B9B9B;
-  margin: 0 auto;
-  -webkit-transition: -webkit-transform 375ms cubic-bezier(0.2, 0.84, 0.46, 0.99);
-  -moz-transition: -moz-transform 375ms cubic-bezier(0.2, 0.84, 0.46, 0.99);
-  transition: transform 375ms cubic-bezier(0.2, 0.84, 0.46, 0.99);
-  z-index: {{zindex}};
-}
-.met-footer-toast * {
-  font: inherit;
-  box-sizing: inherit;
-}
-/*.met-footer-toast.closed {
-  -webkit-transform: translateY(150%);
-  -moz-transform: translateY(150%);
-  -ms-transform: translateY(150%);
-  -o-transform: translateY(150%);
-  transform: translateY(150%);
-  -webkit-transition: -webkit-transform 0.15s linear;
-  -moz-transition: -moz-transform 0.15s linear;
-  transition: transform 0.15s linear;
-}*/
-.met-footer-toast.closed {
-  -webkit-transform: translateY(150%);
-  -moz-transform: translateY(150%);
-  -ms-transform: translateY(150%);
-  -o-transform: translateY(150%);
-  transform: translateY(150%);
-  -webkit-transition: -webkit-transform 0.15s linear;
-  -moz-transition: -moz-transform 0.15s linear;
-  transition: transform 0.15s linear;
-}
-.met-footer-toast b {
-  font-weight: 700;
-}
-.met-footer-toast mark {
-  color: {{highlight-color}};
-  background: none;
-}
-.met-toast-left,
-.met-toast-right {
-  float: left;
-}
-.met-footer-toast .met-flyout-close,
-.met-footer-toast [data-met-return] {
-  float: right;
-}
-.met-toast-left {
-  text-align: right;
-  padding-right: 20px;
-  line-height: 56px;
-  white-space: nowrap;
-  width: 160px;
-  letter-spacing: 0px; /* override Arc's reduced space */
-  color: {{tagline-color}};
-}
-.met-toast-left:before {
-  content: "";
-  border-right: 1px solid;
-  /* DSS-13861: The minifier doesn't like layout vars for colors in shorthand */
-  border-right-color: {{pipe-color}};
-  height: 40px;
-  float: right;
-  position: relative;
-  top: 8px;
-  left: 20px;
-}
-.met-toast-right {
-  padding: 4px 0 0 20px;
-  line-height: 24px;
-  width: 256px;
-}
-.met-footer-toast [data-met-return] {
-  background-color: {{cta-background-color}};
-  color:{{cta-text-color}};
-  font-size: 14px;
-  line-height: 40px;
-  text-decoration: none;
-  border-radius: 3px;
-  margin-top: 8px;
-  white-space: nowrap;
-  width: 344px;
-}
-.met-footer-toast .met-flyout-close {
-    cursor: pointer;
-    display: table-cell;
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    width: 20px;
-    height: 20px;
-    overflow: hidden;
-}
-
-.met-toast-right div:first-child {
-  color:{{title-color}};;
-}
-
-.met-toast-right div:last-child {
-  color:{{description-color}};
-}
- 
-.met-footer-toast .met-flyout-close svg {
-   height: 20px;
-}
-     
-.met-toast-varC .met-toast-left,
-.met-toast-varD .met-toast-left,
-.met-toast-varA .met-toast-right div:last-child {
-  display: none;
-}
-.met-toast-varA .met-toast-right {
-  text-align: left;
-  line-height: 56px;
-  padding-top: 0;
-}
-.met-toast-varB .met-toast-right {
-  text-align: left;
-}
-.met-toast-varC .met-toast-right {
-  width: 416px;
-  padding-left: 0;
-}
-.met-toast-varD .met-toast-right {
-  width: 280px;
-  padding-left: 0;
-}
-.met-toast-varD [data-met-return] {
-  width: 480px;
-} 
-      
-@media only screen and (max-width: 839px) {
   .met-footer-toast {
-    background-image: none;
-    padding: 24px 14px;
-    /*z-index: 5000001; Commented this whilst zindex dynamic, formerly 30 until an ad started appearing over it */
+    height: 104px;
+    width: 100%;
+    padding: 24px 40px;
+    max-width: 1200px;
+    text-align: center;
+    font: 400 18px/24px {{font}}, Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: {{background-color}};
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 1px 4px 0 #9B9B9B;
+    margin: 0 auto;
+    -webkit-transition: -webkit-transform 375ms cubic-bezier(0.2, 0.84, 0.46, 0.99);
+    -moz-transition: -moz-transform 375ms cubic-bezier(0.2, 0.84, 0.46, 0.99);
+    transition: transform 375ms cubic-bezier(0.2, 0.84, 0.46, 0.99);
+    z-index: {{zindex}};
+  }
+  .met-footer-toast * {
+    font: inherit;
+    box-sizing: inherit;
+  }
+  .met-footer-toast.closed {
+    -webkit-transform: translateY(150%);
+    -moz-transform: translateY(150%);
+    -ms-transform: translateY(150%);
+    -o-transform: translateY(150%);
+    transform: translateY(150%);
+    -webkit-transition: -webkit-transform 0.15s linear;
+    -moz-transition: -moz-transform 0.15s linear;
+    transition: transform 0.15s linear;
+  }
+  .met-footer-toast b {
+    font-weight: 700;
+  }
+  .met-footer-toast mark {
+    color: {{highlight-color}};
+    background: none;
+  }
+  .met-toast-left,
+  .met-toast-right {
+    float: left;
+  }
+  .met-footer-toast .met-flyout-close,
+  .met-footer-toast [data-met-return] {
+    float: right;
+  }
+  .met-toast-left {
+    text-align: right;
+    padding-right: 20px;
+    line-height: 56px;
+    white-space: nowrap;
+    width: 160px;
+    letter-spacing: 0px; /* override Arc's reduced space */
+    color: {{tagline-color}};
+  }
+  .met-toast-left:before {
+    content: "";
+    border-right: 1px solid;
+    /* DSS-13861: The minifier doesn't like layout vars for colors in shorthand */
+    border-right-color: {{pipe-color}};
+    height: 40px;
+    float: right;
+    position: relative;
+    top: 8px;
+    left: 20px;
+  }
+  .met-toast-right {
+    padding: 4px 0 0 20px;
+    line-height: 24px;
+    width: 256px;
   }
   .met-footer-toast [data-met-return] {
-    width: 96px;
+    background-color: {{cta-background-color}};
+    color: {{cta-text-color}};
+    font-size: 14px;
+    line-height: 40px;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-top: 8px;
+    white-space: nowrap;
+    width: 344px;
   }
-  .met-toast-varD [data-met-return] {
-    width: 232px;
-  }
-
   .met-footer-toast .met-flyout-close {
-    right: 10px;
-    top: 5px;
+      cursor: pointer;
+      display: table-cell;
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      width: 20px;
+      height: 20px;
+      overflow: hidden;
   }
-}
-@media only screen and (max-width: 547px) {
-  .met-footer-toast {
+  .met-toast-right div:first-child {
+    color: {{title-color}};;
+  }
+  .met-toast-right div:last-child {
+    color: {{description-color}};
+  }
+  .met-footer-toast .met-flyout-close svg {
+     height: 20px;
+  }
+  .met-toast-varC .met-toast-left,
+  .met-toast-varD .met-toast-left,
+  .met-toast-varA .met-toast-right div:last-child {
     display: none;
   }
-}
+  .met-toast-varA .met-toast-right {
+    text-align: left;
+    line-height: 56px;
+    padding-top: 0;
+  }
+  .met-toast-varB .met-toast-right {
+    text-align: left;
+  }
+  .met-toast-varC .met-toast-right {
+    width: 416px;
+    padding-left: 0;
+  }
+  .met-toast-varD .met-toast-right {
+    width: 280px;
+    padding-left: 0;
+  }
+  .met-toast-varD [data-met-return] {
+    width: 480px;
+  }
+  @media only screen and (max-width: 839px) {
+    .met-footer-toast {
+      background-image: none;
+      padding: 24px 14px;
+      /*z-index: 5000001; Commented this whilst zindex dynamic, formerly 30 until an ad started appearing over it */
+    }
+    .met-footer-toast [data-met-return] {
+      width: 96px;
+    }
+    .met-toast-varD [data-met-return] {
+      width: 232px;
+    }
+
+    .met-footer-toast .met-flyout-close {
+      right: 10px;
+      top: 5px;
+    }
+  }
+  @media only screen and (max-width: 547px) {
+    .met-footer-toast {
+      display: none;
+    }
+  }
 </style>
-<div class="met-footer-toast" style="display:none">
-	<div class="met-toast-var{{variation}}" role="complementary" aria-labelledby="trialHeading">
-	  <a href="#" aria-label="Close" class="met-flyout-close met-visually-hidden"><svg viewBox="0 0 25 32" fill="{{close_color}}"><path d="M23.18 23.61q0 .71-.5 1.21l-2.43 2.43q-.5.5-1.21.5t-1.21-.5L12.58 22l-5.25 5.25q-.5.5-1.21.5t-1.21-.5l-2.43-2.43q-.5-.5-.5-1.21t.5-1.21l5.25-5.25-5.25-5.25q-.5-.5-.5-1.21t.5-1.21l2.43-2.43q.5-.5 1.21-.5t1.21.5l5.25 5.25 5.25-5.25q.5-.5 1.21-.5t1.21.5l2.43 2.43q.5.5.5 1.21t-.5 1.21l-5.25 5.25 5.25 5.25q.5.5.5 1.21z"></path></svg>close</a>
-	  <h2 class="met-toast-left" id="trialHeading">
-		<mark><b>{{tagline}}</b></mark>
-	  </h2>
-	  <div class="met-toast-right">
-		 <div><b>{{title}}</b></div>
-		 <div>{{description}}</div>
-	  </div>
-	 <a href="{{subscribe-url}}" data-met-return><b>{{cta-button}}</b></a>
-	</div>
+<div class="met-footer-toast" style="display: none">
+  <div
+    class="met-toast-var{{variation}}"
+    role="complementary"
+    aria-labelledby="trialHeading">
+    <a href="#" aria-label="Close" class="met-flyout-close met-visually-hidden">
+      <svg viewBox="0 0 25 32" fill="{{close_color}}">
+        <path
+          d="M23.18 23.61q0 .71-.5 1.21l-2.43 2.43q-.5.5-1.21.5t-1.21-.5L12.58 22l-5.25 5.25q-.5.5-1.21.5t-1.21-.5l-2.43-2.43q-.5-.5-.5-1.21t.5-1.21l5.25-5.25-5.25-5.25q-.5-.5-.5-1.21t.5-1.21l2.43-2.43q.5-.5 1.21-.5t1.21.5l5.25 5.25 5.25-5.25q.5-.5 1.21-.5t1.21.5l2.43 2.43q.5.5.5 1.21t-.5 1.21l-5.25 5.25 5.25 5.25q.5.5.5 1.21z">
+        </path>
+      </svg>close
+    </a>
+    <h2 class="met-toast-left" id="trialHeading">
+      <mark><b>{{tagline}}</b></mark>
+    </h2>
+    <div class="met-toast-right">
+      <div><b>{{title}}</b></div>
+      <div>{{description}}</div>
+    </div>
+    <a href="{{subscribe-url}}" data-met-return><b>{{cta-button}}</b></a>
+  </div>
 </div>
 <script>
-	/* Zephr-6957: scope-lock fix - Toaster functionality which is use triggered multiple times once we include the Geo-Location configuartion */
-	var lock = 'toaster-header'; 
-	((scope) => {
-	  if (scope[lock]) return;
-	  scope[lock] = true;	
-		/* DSS-15778 - Any change in the code nust be updated in the heade-toaster component */
-		let toasterElem = document.querySelector(".met-footer-toast");
-		const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
-		const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)<180);
-		const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)>180);
-		
-		if(exceedDate.length>0 && withinDate.length!==0){
-			localStorage.setItem("trb.zephr.closeDates", JSON.stringify(withinDate));
-		}else if (withinDate.length===0){
-			localStorage.removeItem("trb.zephr.closeDates");
-		}
-		const closedDateCheck = withinDate.filter(closeData =>  closeData.campaign !== "" && closeData.campaign !== " " && new Date().getTime() < closeData.expirationDate);
-		const newCampaignCheck = withinDate.filter(closeData => closeData.campaign !== "" && closeData.campaign !== " " && closeData.campaign === '{{slug}}');
-		if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
-			document.querySelector("body").appendChild(toasterElem);
-			document.querySelector(".met-footer-toast").style.display="block";
-			console.log('-----Display Desktop-Toaster----------');
-		}
-		else{
-			console.log('-----No Desktop-Toaster----------');
-			document.querySelector(".met-footer-toast").remove();
-			dataLayer.push({'footer_toaster': 'display_not'});
-		}
-		const closeBtnElem = document.querySelector(".met-flyout-close");
-		if(closeBtnElem){
-			document.querySelector(".met-flyout-close").addEventListener('click',function(e){
-				e.preventDefault();
-				 let toasterElem = document.querySelector(".met-footer-toast");
-					console.log('-----close button clicked----------');
-				 if(toasterElem && !toasterElem.classList.contains("closed")){
-					let closeArry = JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
-					const closeDate = new Date().getTime() + (86400000*{{reset-days}});
-					const closeDetails = {
-						'campaign': '{{slug}}',
-						'expirationDate': closeDate,
-						'status': 'closed'
-					};
-					closeArry.push(closeDetails);
-					localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
-					document.querySelector(".met-footer-toast").classList.add("closed");
-					document.querySelector(".met-footer-toast").remove();
-					dataLayer.push({'footer-toaster': 'display_not'});
-				 }
-			  });
-		}
-	})(Window);
+  /* Zephr-6957: scope-lock fix - Toaster functionality which is use triggered multiple times once we include the Geo-Location configuartion */
+  var lock = 'toaster-header';
+  ((scope) => {
+    if (scope[lock]) return;
+    scope[lock] = true;
+    /* DSS-15778 - Any change in the code nust be updated in the heade-toaster component */
+    let toasterElem = document.querySelector(".met-footer-toast");
+    const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
+    const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)<180);
+    const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)>180);
+
+    if(exceedDate.length>0 && withinDate.length!==0){
+      localStorage.setItem("trb.zephr.closeDates", JSON.stringify(withinDate));
+    }else if (withinDate.length === 0){
+      localStorage.removeItem("trb.zephr.closeDates");
+    }
+    const closedDateCheck = withinDate.filter(closeData =>  closeData.campaign !== "" && closeData.campaign !== " " && new Date().getTime() < closeData.expirationDate);
+    const newCampaignCheck = withinDate.filter(closeData => closeData.campaign !== "" && closeData.campaign !== " " && closeData.campaign === '{{slug}}');
+    if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
+      document.querySelector("body").appendChild(toasterElem);
+      document.querySelector(".met-footer-toast").style.display="block";
+      console.log('-----Display Desktop-Toaster----------');
+    }
+    else{
+      console.log('-----No Desktop-Toaster----------');
+      document.querySelector(".met-footer-toast").remove();
+      dataLayer.push({'footer_toaster': 'display_not'});
+    }
+    const closeBtnElem = document.querySelector(".met-flyout-close");
+    if(closeBtnElem){
+      document.querySelector(".met-flyout-close").addEventListener('click',function(e){
+        e.preventDefault();
+         let toasterElem = document.querySelector(".met-footer-toast");
+          console.log('-----close button clicked----------');
+         if(toasterElem && !toasterElem.classList.contains("closed")){
+          let closeArry = JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
+          const closeDate = new Date().getTime() + (86400000*{{reset-days}});
+          const closeDetails = {
+            'campaign': '{{slug}}',
+            'expirationDate': closeDate,
+            'status': 'closed'
+          };
+          closeArry.push(closeDetails);
+          localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
+          document.querySelector(".met-footer-toast").classList.add("closed");
+          document.querySelector(".met-footer-toast").remove();
+          dataLayer.push({'footer-toaster': 'display_not'});
+        }
+      });
+    }
+  })(Window);
 </script>
