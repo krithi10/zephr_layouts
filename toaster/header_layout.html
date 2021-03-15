@@ -88,10 +88,12 @@
 </div>
 <script>
 (() => {
+	/* Zephr-6957: scope-lock fix - Toaster functionality which is use triggered multiple times once we include the Geo-Location configuartion */
 	var lock = 'toaster-header';
 	((scope) => {
 	  if (scope[lock]) return;
 	  scope[lock] = true;		
+		/* DSS-15778 - Any change in the code nust be updated in the Footer-toaster component */
 		let elem = document.querySelector("[data-reg-role='prompt']");
 		let toasterElem = document.querySelector(".met-header-toast");
 		const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
@@ -109,6 +111,7 @@
 			document.querySelector("[data-reg-role='prompt']").appendChild(toasterElem);
 			document.querySelector(".met-header-toast").style.display="block";
 			console.log('-----Display Mobile-Toaster----------');
+			/*DSS-15551- suppress the Mobile-web Toaster*/
 			if(elem.hasAttribute("data-dss-condense") && elem.getAttribute("data-dss-condense")==="true"){
 				document.querySelector(".met-header-toast").style.height="40px";
 				document.querySelector(".met-flyout-close").style.display="none";  
