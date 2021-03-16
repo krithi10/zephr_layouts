@@ -35,6 +35,10 @@
   padding:2px 0;
   }  
 }
+.bar-dss [data-reg-role="button_tablet"] .dss-button a {
+  font-size: 9px;
+  width: 88px;
+}
 </style>
 
 <div class="dss-button">
