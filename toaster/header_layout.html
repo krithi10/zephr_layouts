@@ -117,7 +117,7 @@
     else{
       console.log('-----No Mobile-Toaster----------');
       document.querySelector(".met-header-toast").remove();
-      dataLayer.push({'header_toaster': 'display_not'});
+      dataLayer.push({'header_toaster': 'toaster_close'});
     }
     const closeBtnElem = document.querySelector(".met-flyout-close");
     if(closeBtnElem){
@@ -137,7 +137,7 @@
             localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
             document.querySelector(".met-header-toast").classList.add("closed");
             document.querySelector(".met-header-toast").remove();
-            dataLayer.push({'header_toaster': 'display_not'});
+            dataLayer.push({'event': 'toaster_close'});
          }
       });
     }
