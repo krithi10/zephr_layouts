@@ -199,7 +199,7 @@
     else{
       console.log('-----No Desktop-Toaster----------');
       document.querySelector(".met-footer-toast").remove();
-      dataLayer.push({'event': 'toaster_close'});
+      dataLayer.push({'footer_toaster': 'toaster_close'});
     }
     const closeBtnElem = document.querySelector(".met-flyout-close");
     if(closeBtnElem){
