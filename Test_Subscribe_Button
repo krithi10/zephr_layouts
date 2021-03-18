@@ -56,19 +56,10 @@ var lock = '3efr45vf6gfrd57r';
   scope[lock] = true;
 	console.log("--------------Placement Target :{{placement-target}}-------------");
 	let placementTarget = '{{placement-target}}';
-	//if(placementTarget !== 'trial'){
-		let subBtnElem = document.querySelector(".dss-button");
-		console.log("--------------loading Subscribe Button-------------");
-		if(placementTarget === 'button_desktop' && !document.querySelector("[data-reg-role='button_desktop']").hasChildNodes()){
-		    console.log("--------------button_desktop-------------");
-		    document.querySelector("[data-reg-role='button_desktop']").appendChild(subBtnElem);
-		}else if(placementTarget === 'button_mobile' && !document.querySelector("[data-reg-role='button_mobile']").hasChildNodes()){
-		   console.log("--------------button_mobile-------------");
-		    document.querySelector("[data-reg-role='button_mobile']").appendChild(subBtnElem);
-		}else if(placementTarget === 'button_tablet' && !document.querySelector("[data-reg-role='button_tablet']").hasChildNodes()){
-		   console.log("--------------button_tablet-------------");
-		    document.querySelector("[data-reg-role='button_tablet']").appendChild(subBtnElem);
-		}
-	//}
+	if(placementTarget === 'trial' && !document.querySelector("[data-reg-role='trial']").hasChildNodes()){
+	    let topicFlyoutElem = document.querySelector(".dss-button");
+	    console.log("--------------Topic Flyout-------------");
+	    document.querySelector("[data-reg-role='trial']").appendChild(topicFlyoutElem);
+	}
 })(Window);
 </script>
