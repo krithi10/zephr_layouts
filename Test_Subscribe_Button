@@ -1,6 +1,6 @@
 <!-- { "dss-name": "Button", "dss-reaction-type": "Flyout" } -->
 <style>
-.dss-button a[data-met-return] {
+.met-topic-flyout a[data-met-return] {
   color: {{text-color}};
   display: {{display-type}};
   border-radius: 3px;
@@ -16,15 +16,15 @@
   height:32px;
 }
 
-.dss-button b {
+.met-topic-flyout b {
   font-weight: 900;
 }
-.dss-button mark {
+.met-topic-flyout mark {
   color: {{highlight-color}};
   background: none;
 }
 
-.dss-button a.met-button-varB {
+.met-topic-flyout a.met-button-varB {
   padding: 3px;
   line-height: 13px;
   white-space: normal;
@@ -37,7 +37,7 @@
 }
 </style>
 
-<div class="dss-button">
+<div class="met-topic-flyout">
   <a class="met-button-var{{variation}}" href="{{subscribe-url}}" data-lines="{{mobile-lines}}" data-met-return><b>{{subscribe-text}}<br>{{offer-text}}</b></a>
 </div>
 
@@ -57,7 +57,7 @@ var lock = 'topicflyout';
 	/*console.log("--------------Placement Target :{{placement-target}}-------------");
 	let placementTarget = '{{placement-target}}';
 	if(placementTarget === 'trial' && !document.querySelector("[data-reg-role='trial']").hasChildNodes()){*/
-	    let topicFlyoutElem = document.querySelector(".dss-button");
+	    let topicFlyoutElem = document.querySelector(".met-topic-flyout");
 	    console.log("--------------Topic Flyout-------------");
 	    document.querySelector("[data-reg-role='trial']").appendChild(topicFlyoutElem);
 	//}
