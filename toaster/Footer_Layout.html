@@ -183,6 +183,8 @@
     const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
     //const withinDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)<180);
     //const exceedDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)>180);
+    
+    /*Delete the localstoarge data if it is 180days old*/
     const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)<180);
     const exceedDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)>180);
 
@@ -191,12 +193,12 @@
       localStorage.setItem("trb.zephr.closeDates", JSON.stringify(withinDate));
     }else if (withinDate.length === 0){
       localStorage.removeItem("trb.zephr.closeDates");
-    }
+    } 
     //const closedDateCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && new Date().getTime() < closedDetails.expirationDate);
     //const closedDateCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && new Date().getTime() < closedDetails.closedDate + (86400000*{{reset-days}}));
     //const newCampaignCheck = withinDate.filter(closedDetails => closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}');
-   const closedCampaignCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}' && new Date().getTime() < closedDetails.closedDate + (86400000*{{reset-days}}));
-    if(closedCampaignCheck.length === 0){
+   const closeDateCampgCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}' && new Date().getTime() < closedDetails.closedDate + (86400000*{{reset-days}}));
+    if(closeDateCampgCheck.length === 0){
       document.querySelector("body").appendChild(toasterElem);
       document.querySelector(".met-footer-toast").style.display="block";
       console.log('-----Display Desktop-Toaster----------');
