@@ -98,10 +98,11 @@
     const closeArry = localStorage.getItem(localStorageKey) ? JSON.parse(localStorage.getItem(localStorageKey)): [];
     const milliseconds = 1000 * 60 * 60 * 24;
     const max_expiry_days = 180;
-    
+    const reset_days = {{reset_days}} === "" && {{reset_days}} === " " ? 0 : {{reset_days}};
+   
     /*Check the localstoarge data is 180days old*/
-    const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*{{reset_days}})))/(1000 * 3600 * 24)<max_expiry_days);
-    const exceedDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*{{reset_days}})))/(1000 * 3600 * 24)>max_expiry_days);
+    const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days)))/(1000 * 3600 * 24)<max_expiry_days);
+    const exceedDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days)))/(1000 * 3600 * 24)>max_expiry_days);
     
     if(exceedDate.length>0 && withinDate.length!==0){
       localStorage.setItem(localStorageKey, JSON.stringify(withinDate));
@@ -110,7 +111,7 @@
     }
     
     const closeDateCampgCheck = withinDate.filter(closedDetails => closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}' 
-                                  && new Date().getTime() < closedDetails.closedDate + (milliseconds*{{reset_days}}));
+                                  && new Date().getTime() < closedDetails.closedDate + (milliseconds*reset_days));
       if(promptElem && closeDateCampgCheck.length === 0){
         promptElem.appendChild(toasterElem);
         toasterElem.style.display="block";
