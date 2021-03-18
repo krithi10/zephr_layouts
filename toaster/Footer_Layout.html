@@ -179,10 +179,9 @@
     if (scope[lock]) return;
     scope[lock] = true;
     /* DSS-15778 - Any change in the code nust be updated in the heade-toaster component */
-    let toasterElem = document.querySelector(".met-footer-toast");
+    const toasterElem = document.querySelector(".met-footer-toast");
+    const closeBtnElem = document.querySelector(".met-flyout-close");
     const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
-    //const withinDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)<180);
-    //const exceedDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)>180);
     
     /*Check the localstoarge data is 180days old*/
     const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)<180);
@@ -193,42 +192,42 @@
       localStorage.setItem("trb.zephr.closeDates", JSON.stringify(withinDate));
     }else if (withinDate.length === 0){
       localStorage.removeItem("trb.zephr.closeDates");
-    } 
-    //const closedDateCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && new Date().getTime() < closedDetails.expirationDate);
-    //const closedDateCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && new Date().getTime() < closedDetails.closedDate + (86400000*{{reset-days}}));
-    //const newCampaignCheck = withinDate.filter(closedDetails => closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}');
+    }
    const closeDateCampgCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}' && new Date().getTime() < closedDetails.closedDate + (86400000*{{reset-days}}));
     if(closeDateCampgCheck.length === 0){
       document.querySelector("body").appendChild(toasterElem);
-      document.querySelector(".met-footer-toast").style.display="block";
+      //document.querySelector(".met-footer-toast").style.display="block";
+      toasterElem.style.display="block";
       console.log('-----Display Desktop-Toaster----------');
     }
     else{
       console.log('-----No Desktop-Toaster----------');
-      document.querySelector(".met-footer-toast").remove();
+      //document.querySelector(".met-footer-toast").remove();
+      toasterElem.remove();
       dataLayer.push({'footer_toaster': 'toaster_close'});
     }
-    const closeBtnElem = document.querySelector(".met-flyout-close");
+    
     if(closeBtnElem){
-      document.querySelector(".met-flyout-close").addEventListener('click',function(e){
+      //document.querySelector(".met-flyout-close").addEventListener('click',function(e){
+      closeBtnElem.addEventListener('click',function(e){
         e.preventDefault();
-         let toasterElem = document.querySelector(".met-footer-toast");
+         //let toasterElem = document.querySelector(".met-footer-toast");
           console.log('-----close button clicked----------');
          if(toasterElem && !toasterElem.classList.contains("closed")){
-          let closeArry = JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
-          //const closeDate = new Date().getTime() + (86400000*{{reset-days}});
+          const closeArry = JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
           const closeDetails = {
             'campaign': '{{slug}}',
-            //'expirationDate': closeDate,
              closedDate: new Date().getTime(),
             'status': 'closed'
           };
-          closeArry.push(closeDetails);
           if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
+            closeArry.push(closeDetails);
             localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
           }
-          document.querySelector(".met-footer-toast").classList.add("closed");
-          document.querySelector(".met-footer-toast").remove();
+          //document.querySelector(".met-footer-toast").classList.add("closed");
+          //document.querySelector(".met-footer-toast").remove();
+           toasterElem.classList.add("closed");
+           toasterElem.remove();
           dataLayer.push({'event': 'toaster_close'});
         }
       });
