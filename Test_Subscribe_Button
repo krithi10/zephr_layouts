@@ -54,12 +54,12 @@ var lock = '3efr45vf6gfrd57r';
 ((scope) => {
   if (scope[lock]) return;
   scope[lock] = true;
-	console.log("--------------Placement Target :{{placement-target}}-------------");
+	/*console.log("--------------Placement Target :{{placement-target}}-------------");
 	let placementTarget = '{{placement-target}}';
-	if(placementTarget === 'trial' && !document.querySelector("[data-reg-role='trial']").hasChildNodes()){
+	if(placementTarget === 'trial' && !document.querySelector("[data-reg-role='trial']").hasChildNodes()){*/
 	    let topicFlyoutElem = document.querySelector(".dss-button");
 	    console.log("--------------Topic Flyout-------------");
 	    document.querySelector("[data-reg-role='trial']").appendChild(topicFlyoutElem);
-	}
+	//}
 })(Window);
 </script>
