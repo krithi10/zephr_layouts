@@ -193,9 +193,10 @@
       localStorage.removeItem("trb.zephr.closeDates");
     }
     //const closedDateCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && new Date().getTime() < closedDetails.expirationDate);
-    const closedDateCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && new Date().getTime() < closedDetails.closedDate + (86400000*{{reset-days}}));
-    const newCampaignCheck = withinDate.filter(closedDetails => closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}');
-    if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
+    //const closedDateCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && new Date().getTime() < closedDetails.closedDate + (86400000*{{reset-days}}));
+    //const newCampaignCheck = withinDate.filter(closedDetails => closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}');
+   const closedCampaignCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}' && new Date().getTime() < closedDetails.closedDate + (86400000*{{reset-days}}));
+    if(closedCampaignCheck.length === 0){
       document.querySelector("body").appendChild(toasterElem);
       document.querySelector(".met-footer-toast").style.display="block";
       console.log('-----Display Desktop-Toaster----------');
