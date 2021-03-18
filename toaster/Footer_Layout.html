@@ -181,16 +181,20 @@
     /* DSS-15778 - Any change in the code nust be updated in the heade-toaster component */
     let toasterElem = document.querySelector(".met-footer-toast");
     const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
-    const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)<180);
-    const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)>180);
+    //const withinDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)<180);
+    //const exceedDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)>180);
+    const withinDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)<180);
+    const exceedDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)>180);
+
 
     if(exceedDate.length>0 && withinDate.length!==0){
       localStorage.setItem("trb.zephr.closeDates", JSON.stringify(withinDate));
     }else if (withinDate.length === 0){
       localStorage.removeItem("trb.zephr.closeDates");
     }
-    const closedDateCheck = withinDate.filter(closeData =>  closeData.campaign !== "" && closeData.campaign !== " " && new Date().getTime() < closeData.expirationDate);
-    const newCampaignCheck = withinDate.filter(closeData => closeData.campaign !== "" && closeData.campaign !== " " && closeData.campaign === '{{slug}}');
+    //const closedDateCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && new Date().getTime() < closedDetails.expirationDate);
+    const closedDateCheck = withinDate.filter(closedDetails =>  closedDetails.campaign !== "" && closedDetails.campaign !== " " && new Date().getTime() < closedDetails.closedDate + (86400000*{{reset-days}}));
+    const newCampaignCheck = withinDate.filter(closedDetails => closedDetails.campaign !== "" && closedDetails.campaign !== " " && closedDetails.campaign === '{{slug}}');
     if(closedDateCheck.length === 0 || newCampaignCheck.length === 0){
       document.querySelector("body").appendChild(toasterElem);
       document.querySelector(".met-footer-toast").style.display="block";
@@ -209,10 +213,11 @@
           console.log('-----close button clicked----------');
          if(toasterElem && !toasterElem.classList.contains("closed")){
           let closeArry = JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
-          const closeDate = new Date().getTime() + (86400000*{{reset-days}});
+          //const closeDate = new Date().getTime() + (86400000*{{reset-days}});
           const closeDetails = {
             'campaign': '{{slug}}',
-            'expirationDate': closeDate,
+            //'expirationDate': closeDate,
+             closedDate: new Date().getTime()
             'status': 'closed'
           };
           closeArry.push(closeDetails);
