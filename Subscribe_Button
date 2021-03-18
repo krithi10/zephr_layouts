@@ -54,17 +54,13 @@ trb.metering.manager.user.mobile(function(tablet) {
 </script>
 -->
 <script>
-	var lock = 'subscribeBtn';
-	((scope) => {
-	  if (scope[lock]) return;
-	  scope[lock] = true;	
+	//var lock = 'subscribeBtn';
+	//((scope) => {
+	  //if (scope[lock]) return;
+	  //scope[lock] = true;	
+	  (()=>{
 	console.log("--------------Placement Target :{{placement-target}}-------------");
 	let placementTarget = '{{placement-target}}';
-	if(placementTarget === 'trial' && !document.querySelector("[data-reg-role='trial']").hasChildNodes()){
-	    let topicFlyoutElem = document.querySelector(".dss-button");
-	    console.log("--------------Topic Flyout-------------");
-	    document.querySelector("[data-reg-role='trial']").appendChild(topicFlyoutElem);
-	}
 	if(placementTarget !== 'trial'){
 		let subBtnElem = document.querySelector(".dss-button");
 		console.log("--------------loading Subscribe Button-------------");
@@ -79,5 +75,11 @@ trb.metering.manager.user.mobile(function(tablet) {
 		    document.querySelector("[data-reg-role='button_tablet']").appendChild(subBtnElem);
 		}
 	}
-})(Window)
+	if(placementTarget === 'trial' && !document.querySelector("[data-reg-role='trial']").hasChildNodes()){
+	    let topicFlyoutElem = document.querySelector(".dss-button");
+	    console.log("--------------Topic Flyout-------------");
+	    document.querySelector("[data-reg-role='trial']").appendChild(topicFlyoutElem);
+	}
+//})(Window)
+})()
 </script>
