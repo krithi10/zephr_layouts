@@ -183,8 +183,8 @@
     const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
     //const withinDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)<180);
     //const exceedDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)>180);
-    const withinDate = closeArry.filter(closedDetails => closedDetails.campaign === '{{slug}}' && Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)<180);
-    const exceedDate = closeArry.filter(closedDetails => closedDetails.campaign === '{{slug}}' && Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)>180);
+    const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)<180);
+    const exceedDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)>180);
 
 
     if(exceedDate.length>0 && withinDate.length!==0){
