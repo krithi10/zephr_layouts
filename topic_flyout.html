@@ -1,0 +1,61 @@
+<!-- { "dss-name": "Button", "dss-reaction-type": "Flyout" } -->
+<style>
+.met-topic-flyout a[data-met-return] {
+  color: {{text-color}};
+  display: {{display-type}};
+  border-radius: 3px;
+  font: 400 11px/40px Lato, Arial, sans-serif;
+  background-color: {{background-color}};
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  text-align: center;
+  overflow: hidden;
+  width: 185px;
+  height:32px;
+}
+
+.met-topic-flyout b {
+  font-weight: 900;
+}
+.met-topic-flyout mark {
+  color: {{highlight-color}};
+  background: none;
+}
+
+.met-topic-flyout a.met-button-varB {
+  padding: 3px;
+  line-height: 13px;
+  white-space: normal;
+}
+
+@media screen and (max-width: 414px) {
+  .bar-dss [data-reg-role=button_mobile] a[data-met-return][data-lines="2"] {
+  padding:2px 0;
+  }  
+}
+</style>
+
+<div class="met-topic-flyout">
+  <a class="met-button-var{{variation}}" href="{{subscribe-url}}" data-lines="{{mobile-lines}}" data-met-return><b>{{subscribe-text}}<br>{{offer-text}}</b></a>
+</div>
+
+<!-- unsupported by zephr
+<script>
+trb.metering.manager.user.mobile(function(tablet) {
+  var altsub = '${subscribeUrl_ALT}';
+  altsub && /button_tablet/.test('${selector}') != tablet && jQuery('.met-rule-${i} a').attr('href', altsub);
+});
+</script>
+-->
+<script>
+var lock = 'topicflyout';
+((scope) => {
+  if (scope[lock]) return;
+  scope[lock] = true;
+		  let topicFlyoutElem = document.querySelector(".met-topic-flyout");
+	    console.log("--------------Topic Flyout-------------");
+	    document.querySelector("[data-reg-role='trial']").appendChild(topicFlyoutElem);
+})(Window);
+</script>
