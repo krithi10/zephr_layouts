@@ -224,7 +224,9 @@
             'status': 'closed'
           };
           closeArry.push(closeDetails);
-          localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
+          if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
+            localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
+          }
           document.querySelector(".met-footer-toast").classList.add("closed");
           document.querySelector(".met-footer-toast").remove();
           dataLayer.push({'event': 'toaster_close'});
