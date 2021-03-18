@@ -184,7 +184,7 @@
     //const withinDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)<180);
     //const exceedDate = closeArry.filter(closedDetails => Math.round(new Date().getTime() - closedDetails.closedDate)/(1000 * 3600 * 24)>180);
     
-    /*Delete the localstoarge data if it is 180days old*/
+    /*Check the localstoarge data is 180days old*/
     const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)<180);
     const exceedDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (86400000*{{reset-days}})))/(1000 * 3600 * 24)>180);
 
