@@ -70,11 +70,11 @@
       -o-transform: rotate(-45deg);
       transform: rotate(-45deg);
   }
-  /*@media only screen and (min-width: 548px) {
+  @media only screen and (min-width: 548px) {
     .met-header-toast {
       display: none;
     }
-  }*/
+  }
 </style>
 <div class="met-header-toast" style="display: none">
   <div class="met-toast-close{{closeable}}">
@@ -126,35 +126,6 @@
         toasterElem.remove();
         dataLayer.push({'header_toaster': 'toaster_close'});
       }
-//     let elem = document.querySelector("[data-reg-role='prompt']");
-//     let toasterElem = document.querySelector(".met-header-toast");
-//     const closeArry = localStorage.getItem("trb.zephr.closeDates") ? JSON.parse(localStorage.getItem("trb.zephr.closeDates")): [];
-//     const withinDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)<180);
-//     const exceedDate = closeArry.filter(closeData => Math.round(new Date().getTime() - closeData.expirationDate)/(1000 * 3600 * 24)>180);
-
-//     if(exceedDate.length> 0 && withinDate.length!== 0){
-//       localStorage.setItem("trb.zephr.closeDates", JSON.stringify(withinDate));
-//     }else if (withinDate.length=== 0){
-//       localStorage.removeItem("trb.zephr.closeDates");
-//     }
-//     const closedDateCheck = withinDate.filter(closeData => closeData.campaign !== "" && closeData.campaign !== " " && new Date().getTime() < closeData.expirationDate);
-//     const newCampaignCheck = withinDate.filter(closeData => closeData.campaign !== "" && closeData.campaign !== " " && closeData.campaign === '{{slug}}');
-//     if(elem && (closedDateCheck.length === 0 || newCampaignCheck.length === 0)){
-//       document.querySelector("[data-reg-role='prompt']").appendChild(toasterElem);
-//       document.querySelector(".met-header-toast").style.display="block";
-//       console.log('-----Display Mobile-Toaster----------');
-//       /*DSS-15551- suppress the Mobile-web Toaster*/
-//       if(elem.hasAttribute("data-dss-condense") && elem.getAttribute("data-dss-condense")=== "true"){
-//         document.querySelector(".met-header-toast").style.height= "40px";
-//         document.querySelector(".met-flyout-close").style.display= "none";
-//              }
-//     }
-//     else{
-//       console.log('-----No Mobile-Toaster----------');
-//       document.querySelector(".met-header-toast").remove();
-//       dataLayer.push({'header_toaster': 'toaster_close'});
-//     }
-//     const closeBtnElem = document.querySelector(".met-flyout-close");
     if(closeBtnElem){
       closeBtnElem.addEventListener('click',function(e){
         e.preventDefault();
@@ -175,25 +146,6 @@
           dataLayer.push({'event': 'toaster_close'});
         }
       });
-     /* document.querySelector(".met-flyout-close").addEventListener('click',function(e){
-        e.preventDefault();
-         let toasterElem = document.querySelector(".met-header-toast");
-          console.log('-----close button clicked----------');
-          if(toasterElem && !toasterElem.classList.contains("closed")){
-            let closeArry = JSON.parse(localStorage.getItem("trb.zephr.closeDates") || "[]");
-            const closeDate = new Date().getTime() + (86400000*{{reset-days}});
-            const closeDetails = {
-              'campaign': '{{slug}}',
-              'expirationDate': closeDate,
-              'status': 'closed'
-            };
-            closeArry.push(closeDetails);
-            localStorage.setItem("trb.zephr.closeDates", JSON.stringify(closeArry));
-            document.querySelector(".met-header-toast").classList.add("closed");
-            document.querySelector(".met-header-toast").remove();
-            dataLayer.push({'event': 'toaster_close'});
-         }
-      });*/
     }
   })(Window);
 </script>
