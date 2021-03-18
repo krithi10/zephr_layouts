@@ -50,7 +50,7 @@ trb.metering.manager.user.mobile(function(tablet) {
 </script>
 -->
 <script>
-var lock = '3efr45vf6gfrd57r';
+var lock = 'topicflyout';
 ((scope) => {
   if (scope[lock]) return;
   scope[lock] = true;
