@@ -224,7 +224,7 @@
           if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
               closeArry.push(closeDetails);
               localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
-              /*var zephrOutcomes = window.Zephr.outcomes;
+              var zephrOutcomes = window.Zephr.outcomes;
                 for (var key in zephrOutcomes){
                   var featureLabel =zephrOutcomes[key].featureLabel;
                   var outcomeLabel =zephrOutcomes[key].outcomeLabel;
@@ -233,7 +233,7 @@
                       var outcome = outcomeLabel;
                       document.cookie = feature+"="+outcome;
                     };       
-               }*/
+               }
            }
            toasterElem.classList.add("closed");
            toasterElem.remove();
