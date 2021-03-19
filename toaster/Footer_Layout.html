@@ -207,7 +207,7 @@
     else{
       console.log('-----No Desktop-Toaster----------');
       toasterElem.remove();
-      document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date(closeDateCampgCheck[0].closedDate + milliseconds*reset_days).toGMTString();
+      document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date(closeDateCampgCheck[0].closedDate + milliseconds*reset_days);
       //dataLayer.push({'footer_toaster': 'toaster_close'});
     }
     
@@ -230,7 +230,7 @@
                   var featureLabel =zephrOutcomes[key].featureLabel;
                   var outcomeLabel =zephrOutcomes[key].outcomeLabel;
                   if(outcomeLabel.includes('Toaster') && featureLabel.includes('Toaster')){
-                      document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date().toGMTString();
+                      document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date();
                     };       
                }
            }
