@@ -192,6 +192,16 @@
     const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days)))/(1000 * 3600 * 24)<max_expiry_days);
     const exceedDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days)))/(1000 * 3600 * 24)>max_expiry_days);
     
+        const zephrOutcomes = window.Zephr.outcomes;
+        let featureLabel ,outcomeLabel;
+        for (let key in zephrOutcomes){
+           featureLabel =zephrOutcomes[key].featureLabel;
+           outcomeLabel =zephrOutcomes[key].outcomeLabel;
+          if(outcomeLabel.includes('Toaster') && featureLabel.includes('Toaster')){
+              document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date();
+            };       
+       }
+    
     if(exceedDate.length>0 && withinDate.length!==0){
       localStorage.setItem(localStorageKey, JSON.stringify(withinDate));
     }else if (withinDate.length === 0){
@@ -225,14 +235,7 @@
           if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
               closeArry.push(closeDetails);
               localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
-              var zephrOutcomes = window.Zephr.outcomes;
-                for (var key in zephrOutcomes){
-                  var featureLabel =zephrOutcomes[key].featureLabel;
-                  var outcomeLabel =zephrOutcomes[key].outcomeLabel;
-                  if(outcomeLabel.includes('Toaster') && featureLabel.includes('Toaster')){
-                      document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date();
-                    };       
-               }
+              
            }
            toasterElem.classList.add("closed");
            toasterElem.remove();
