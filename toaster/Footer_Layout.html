@@ -230,7 +230,7 @@
                   var featureLabel =zephrOutcomes[key].featureLabel;
                   var outcomeLabel =zephrOutcomes[key].outcomeLabel;
                   if(outcomeLabel.includes('Toaster') && featureLabel.includes('Toaster')){
-                      document.cookie = featureLabel+"="+outcomeLabel; "expires=" + closeDetails.closedDate.toUTCString();
+                      document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date().toGMTString();
                     };       
                }
            }
