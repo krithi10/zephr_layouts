@@ -189,8 +189,8 @@
          reset_days = reset_days!=="" && reset_days!== " " ? parseInt(reset_days) : 0;
     
      /*Check the localstoarge data is 180days old*/
-    const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days)))/(1000 * 3600 * 24)<max_expiry_days);
-    const exceedDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days)))/(1000 * 3600 * 24)>max_expiry_days);
+    const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days))/(1000 * 3600 * 24))<max_expiry_days);
+    const exceedDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days))/(1000 * 3600 * 24))>max_expiry_days);
     
     if(exceedDate.length>0 && withinDate.length!==0){
       localStorage.setItem(localStorageKey, JSON.stringify(withinDate));
