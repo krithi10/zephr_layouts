@@ -222,19 +222,19 @@
             'status': 'closed'
           };
           if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
-            closeArry.push(closeDetails);
-            localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
-            var zephrOutcomes = window.Zephr.outcomes;
-            for (var key in zephrOutcomes){
-              var featureLabel =zephrOutcomes[key].featureLabel;
-              var outcomeLabel =zephrOutcomes[key].outcomeLabel;
-              if(outcomeLabel.includes('Toaster') && featureLabel.includes('Toaster')){
-                  var feature = featureLabel;
-                  var outcome = outcomeLabel;
-                  document.cookie = feature+"="+outcome;
-                };       
-            }
-          }
+              closeArry.push(closeDetails);
+              localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
+              /*var zephrOutcomes = window.Zephr.outcomes;
+                for (var key in zephrOutcomes){
+                  var featureLabel =zephrOutcomes[key].featureLabel;
+                  var outcomeLabel =zephrOutcomes[key].outcomeLabel;
+                  if(outcomeLabel.includes('Toaster') && featureLabel.includes('Toaster')){
+                      var feature = featureLabel;
+                      var outcome = outcomeLabel;
+                      document.cookie = feature+"="+outcome;
+                    };       
+               }*/
+           }
            toasterElem.classList.add("closed");
            toasterElem.remove();
           dataLayer.push({'event': 'toaster_close'});
