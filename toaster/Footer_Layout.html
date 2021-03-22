@@ -243,6 +243,7 @@
            }
            toasterElem.classList.add("closed");
            toasterElem.remove();
+           dataLayer.push({'event': 'toaster_close'});
         }
       });
     }
