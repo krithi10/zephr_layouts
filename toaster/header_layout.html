@@ -105,6 +105,16 @@
     const withinDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days)))/(1000 * 3600 * 24)<max_expiry_days);
     const exceedDate = closeArry.filter(closedDetails =>  Math.round(new Date().getTime() - (closedDetails.closedDate + (milliseconds*reset_days)))/(1000 * 3600 * 24)>max_expiry_days);
     
+    const zephrOutcomes = window.Zephr.outcomes;
+    let toasterFeature , featureLabel , outcomeLabel, expirationDate;
+    if(zephrOutcomes){
+      toasterFeature = Object.entries(zephrOutcomes).filter(a => a[1].featureLabel.match('Toaster'))[0][1];
+      if(toasterFeature){
+         featureLabel = toasterFeature.featureLabel;
+         outcomeLabel = toasterFeature.outcomeLabel;
+      }       
+    }
+    
     if(exceedDate.length>0 && withinDate.length!==0){
       localStorage.setItem(localStorageKey, JSON.stringify(withinDate));
     }else if (withinDate.length === 0){
@@ -124,9 +134,10 @@
         }
       }
       else{
+        expirationDate = new Date(closeDateCampgCheck[0].closedDate + (milliseconds*reset_days)).toUTCString();
+        document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+expirationDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.');
         console.log('-----No Mobile-Toaster----------');
         toasterElem.remove();
-        dataLayer.push({'header_toaster': 'toaster_close'});
       }
     if(closeBtnElem){
       closeBtnElem.addEventListener('click',function(e){
@@ -139,13 +150,17 @@
              closedDate: new Date().getTime(),
             'status': 'closed'
           };
+          let date = new Date();
+           date.setTime(date.getTime() + (milliseconds*reset_days));
+           date.toUTCString();
           if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
             closeArry.push(closeDetails);
             localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
+            document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+date+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.'); 
           }
            toasterElem.classList.add("closed");
            toasterElem.remove();
-          dataLayer.push({'event': 'toaster_close'});
+           dataLayer.push({'event': 'toaster_close'});
         }
       });
     }
