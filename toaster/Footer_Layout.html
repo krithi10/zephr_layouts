@@ -200,7 +200,7 @@
       if(toasterFeature){
          featureLabel = toasterFeature.featureLabel;
          outcomeLabel = toasterFeature.outcomeLabel;
-        document.cookie = featureLabel+"="+outcomeLabel; SameSite=None; Secure; expires = "+expirationDate+"; path=/; domain=." + location.hostname.replace(/^www\./i, "");
+        document.cookie = featureLabel+"="+outcomeLabel; SameSite=None; Secure; expires = "+expirationDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.');
       }       
     }
 
@@ -239,7 +239,7 @@
               closeArry.push(closeDetails);
               localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
              // document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date();
-            document.cookie = featureLabel+"="+outcomeLabel; SameSite=None; Secure; expires = "+expirationDate+"; path=/; domain=." + location.hostname.replace(/^www\./i, "");
+            document.cookie = featureLabel+"="+outcomeLabel; SameSite=None; Secure; expires = "+expirationDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.');
            }
            toasterElem.classList.add("closed");
            toasterElem.remove();
