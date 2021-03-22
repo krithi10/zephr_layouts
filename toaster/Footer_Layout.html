@@ -237,7 +237,7 @@
           if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
               closeArry.push(closeDetails);
               localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
-                 
+              document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date();
            }
            toasterElem.classList.add("closed");
            toasterElem.remove();
