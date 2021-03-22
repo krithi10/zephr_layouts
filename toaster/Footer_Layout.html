@@ -200,7 +200,6 @@
       if(toasterFeature){
          featureLabel = toasterFeature.featureLabel;
          outcomeLabel = toasterFeature.outcomeLabel;
-        document.cookie = featureLabel+"="+outcomeLabel; SameSite=None; Secure; expires = "+expirationDate+";
       }       
     }
 
@@ -218,6 +217,7 @@
       console.log('-----Display Desktop-Toaster----------');
     }
     else{
+      document.cookie = featureLabel+"="+outcomeLabel; SameSite=None; Secure; expires = "+expirationDate+";
       console.log('-----No Desktop-Toaster----------');
       toasterElem.remove();
      // document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date(closeDateCampgCheck[0].closedDate + milliseconds*reset_days);
@@ -239,7 +239,7 @@
               closeArry.push(closeDetails);
               localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
              // document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date();
-            document.cookie = featureLabel+"="+outcomeLabel; SameSite=None; Secure; expires = "+expirationDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.');
+            document.cookie = featureLabel+"="+outcomeLabel; SameSite=None; Secure; expires = "+expirationDate+";
            }
            toasterElem.classList.add("closed");
            toasterElem.remove();
