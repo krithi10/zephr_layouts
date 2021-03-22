@@ -238,12 +238,10 @@
           if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
               closeArry.push(closeDetails);
               localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
-             // document.cookie = featureLabel+"="+outcomeLabel; "expires=" + new Date();
-            document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+expirationDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.');
+              document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+expirationDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.'); 
            }
            toasterElem.classList.add("closed");
            toasterElem.remove();
-          dataLayer.push({'event': 'toaster_close'});
         }
       });
     }
