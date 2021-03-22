@@ -234,7 +234,7 @@
             'status': 'closed'
           };
           let date = new Date();
-           date.setTime(b.getTime() + (milliseconds*reset_days));
+           date.setTime(date.getTime() + (milliseconds*reset_days));
            date.toUTCString();
           if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
               closeArry.push(closeDetails);
