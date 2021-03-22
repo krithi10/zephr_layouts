@@ -194,9 +194,8 @@
     
     const zephrOutcomes = window.Zephr.outcomes;
     let toasterFeature , featureLabel , outcomeLabel;
-    let expirationDate = new Date().toUTCString();
     if(zephrOutcomes){
-      toasterFeature = Object.entries(zephrOutcomes).filter(a => a[1].featureLabel.match('Toaster'))[0][1]
+      toasterFeature = Object.entries(zephrOutcomes).filter(a => a[1].featureLabel.match('Toaster'))[0][1];
       if(toasterFeature){
          featureLabel = toasterFeature.featureLabel;
          outcomeLabel = toasterFeature.outcomeLabel;
@@ -217,6 +216,7 @@
       console.log('-----Display Desktop-Toaster----------');
     }
     else{
+      const expirationDate = new Date(closeDateCampgCheck[0].closedDate + (milliseconds*reset_days)).toUTCString();
       document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+expirationDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.');
       console.log('-----No Desktop-Toaster----------');
       toasterElem.remove();
@@ -235,10 +235,11 @@
              closedDate: new Date().getTime(),
             'status': 'closed'
           };
+          const closedDate = new Date().toUTCString();
           if(closeDetails.campaign!=="" && closeDetails.campaign!=" "){
               closeArry.push(closeDetails);
               localStorage.setItem(localStorageKey, JSON.stringify(closeArry));
-              document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+expirationDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.'); 
+              document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+closedDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.'); 
            }
            toasterElem.classList.add("closed");
            toasterElem.remove();
