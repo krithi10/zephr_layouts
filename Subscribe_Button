@@ -2,7 +2,7 @@
 <style>
 .dss-button a[data-met-return] {
   color: {{text-color}};
-  display: {{display-type}};
+  display: block;
   border-radius: 3px;
   font: 400 11px/40px Lato, Arial, sans-serif;
   background-color: {{background-color}};
