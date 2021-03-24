@@ -195,10 +195,10 @@
     const zephrOutcomes = window.Zephr.outcomes;
     let toasterFeature , featureLabel , outcomeLabel, expirationDate;
     if(zephrOutcomes){
-      toasterFeature = Object.entries(zephrOutcomes).filter(a => a[1].featureLabel.match('Toaster'))[0][1];
+      toasterFeature = Object.entries(zephrOutcomes).filter(a => a[1].featureLabel.match('Toaster'))[0];
       if(toasterFeature){
-         featureLabel = toasterFeature.featureLabel;
-         outcomeLabel = toasterFeature.outcomeLabel;
+         featureLabel = toasterFeature[1].featureLabel;
+         outcomeLabel = toasterFeature[1].outcomeLabel;
       }       
     }
 
@@ -213,7 +213,8 @@
     if(closeDateCampgCheck.length === 0){
       document.querySelector("body").appendChild(toasterElem);
       toasterElem.style.display="block";
-      console.log('-----Display Desktop-Toaster----------');
+      document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+new Date().toUTCString()+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.');
+      console.log('-----Display document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+expirationDate+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.');Desktop-Toaster----------');
     }
     else{
        expirationDate = new Date(closeDateCampgCheck[0].closedDate + (milliseconds*reset_days)).toUTCString();
