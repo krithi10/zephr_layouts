@@ -108,10 +108,10 @@
     const zephrOutcomes = window.Zephr.outcomes;
     let toasterFeature , featureLabel , outcomeLabel, expirationDate;
     if(zephrOutcomes){
-      toasterFeature = Object.entries(zephrOutcomes).filter(a => a[1].featureLabel.match('Toaster'))[0][1];
+      toasterFeature = Object.entries(zephrOutcomes).filter(outcomes => outcomes[1].featureLabel.match('Toaster'))[0];
       if(toasterFeature){
-         featureLabel = toasterFeature.featureLabel;
-         outcomeLabel = toasterFeature.outcomeLabel;
+         featureLabel = toasterFeature[1].featureLabel;
+         outcomeLabel = toasterFeature[1].outcomeLabel;
       }       
     }
     
@@ -126,6 +126,7 @@
       if(promptElem && closeDateCampgCheck.length === 0){
         promptElem.appendChild(toasterElem);
         toasterElem.style.display="block";
+        document.cookie = featureLabel+"="+outcomeLabel+"; SameSite=None; Secure; expires="+new Date().toUTCString()+"; path=/; domain=" + document.location.hostname.split('.').slice(-2).join('.');
         console.log('-----Display Mobile-Toaster----------');
         /*DSS-15551- suppress the Mobile-web Toaster*/
         if(promptElem.hasAttribute("data-dss-condense") && promptElem.getAttribute("data-dss-condense")=== "true"){
