@@ -56,30 +56,21 @@ trb.metering.manager.user.mobile(function(tablet) {
 <script>
 	var lock = 'subscribeBtn';
 	((scope) => {
-	 if (scope[lock]) return;
-	  scope[lock] = true;	
-	  //(()=>{
-	console.log("--------------Placement Target :{{placement-target}}-------------");
-	let placementTarget = '{{placement-target}}';
-	//if(placementTarget !== 'trial'){
+		if (scope[lock]) return;
+		scope[lock] = true;	
+		console.log("--------------Placement Target :{{placement-target}}-------------");
+		let placementTarget = '{{placement-target}}';
 		let subBtnElem = document.querySelector(".dss-button");
 		console.log("--------------loading Subscribe Button-------------");
 		if(placementTarget === 'button_desktop' && !document.querySelector("[data-reg-role='button_desktop']").hasChildNodes()){
-		    console.log("--------------button_desktop-------------");
-		    document.querySelector("[data-reg-role='button_desktop']").appendChild(subBtnElem);
+		   console.log("--------------button_desktop-------------");
+		   document.querySelector("[data-reg-role='button_desktop']").appendChild(subBtnElem);
 		}else if(placementTarget === 'button_mobile' && !document.querySelector("[data-reg-role='button_mobile']").hasChildNodes()){
 		   console.log("--------------button_mobile-------------");
-		    document.querySelector("[data-reg-role='button_mobile']").appendChild(subBtnElem);
+		   document.querySelector("[data-reg-role='button_mobile']").appendChild(subBtnElem);
 		}else if(placementTarget === 'button_tablet' && !document.querySelector("[data-reg-role='button_tablet']").hasChildNodes()){
 		   console.log("--------------button_tablet-------------");
-		    document.querySelector("[data-reg-role='button_tablet']").appendChild(subBtnElem);
-		}
-	//}
-	/*if(placementTarget === 'trial' && !document.querySelector("[data-reg-role='trial']").hasChildNodes()){
-	    let topicFlyoutElem = document.querySelector(".dss-button");
-	    console.log("--------------Topic Flyout-------------");
-	    document.querySelector("[data-reg-role='trial']").appendChild(topicFlyoutElem);
-	}*/
+		   document.querySelector("[data-reg-role='button_tablet']").appendChild(subBtnElem);
+		}	
 })(Window)
-//})()
 </script>
